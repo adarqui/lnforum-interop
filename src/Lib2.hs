@@ -464,6 +464,38 @@ apiEntries_TH' =
 
 
 
+  -- Thread Post Stars
+  , ApiEntry_TH "ThreadPostStars"
+    [ ParNone_TH
+    , ParBy_TH "ByThreadPostStarsIds" ''Int64_L
+    , ParBy_TH "ByThreadPostsIds" ''Int64_L
+    , ParBy_TH "ByThreadPostId" ''Int64
+    ]
+    [ ApiGET_TH ''ThreadPostStarResponses ]
+
+  , ApiEntry_TH "ThreadPostStar"
+    [ ParBy_TH "ByThreadPostId" ''Int64 ]
+    [ ApiPOST_TH ''ThreadPostStarRequest ''ThreadPostStarResponse ]
+
+  , ApiEntry_TH "ThreadPostStar"
+    [ Par_TH [("thread_post_star_id", ''Int64)] ]
+    [ ApiGET_TH ''ThreadPostStarResponse
+    , ApiPUT_TH ''ThreadPostStarRequest ''ThreadPostStarResponse
+    , ApiDELETE_TH ''()
+    ]
+
+  , ApiEntry_TH "ThreadPostStarStats"
+    [ ParBy_TH "ByThreadPostsIds" ''Int64_L
+    , ParBy_TH "ByThreadPostStarsIds" ''Int64_L
+    ]
+    [ ApiGET_TH ''ThreadPostStarStatResponses ]
+
+  , ApiEntry_TH "ThreadPostStarStat"
+    [ Par_TH [("thread_post_star_id", ''Int64)] ]
+    [ ApiGET_TH ''ThreadPostStarStatResponse ]
+
+
+
   -- User
   , ApiEntry_TH "Users"
     [ ParNone_TH
