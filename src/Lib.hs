@@ -150,6 +150,13 @@ mkExports
   , f ''ThreadPostLikeStatResponse
   , f ''ThreadPostLikeStatResponses
 
+  , f ''ThreadPostStarRequest
+  , f ''ThreadPostStarResponse
+  , f ''ThreadPostStarResponses
+
+  , f ''ThreadPostStarStatResponse
+  , f ''ThreadPostStarStatResponses
+
   , f ''UserRequest
   , f ''UserResponse
   , f ''UserResponses
