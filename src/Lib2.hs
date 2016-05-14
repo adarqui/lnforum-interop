@@ -723,7 +723,7 @@ apiEntries_TH' =
   , ApiEntry_TH "LeuronPacks"
     [ ParNone_TH
     , ParBy_TH "ByLeuronsIds" ''Int64_L
-    , ParBy_TH "ByResourceId" ''Int64_L
+    , ParBy_TH "ByResourceId" ''Int64
     ]
     [ ApiGET_TH ''LeuronPackResponses ]
 
