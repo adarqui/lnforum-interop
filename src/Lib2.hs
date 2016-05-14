@@ -241,7 +241,7 @@ apiEntries_TH' =
 
   , ApiEntry_TH "LeuronLikeStats"
     [ ParBy_TH "ByLeuronsIds" ''Int64_L
-    , ParBy_TH "ByLeuronLikesIds" ''Int64_L
+--    , ParBy_TH "ByLeuronLikesIds" ''Int64_L
     ]
     [ ApiGET_TH ''LeuronLikeStatResponses ]
 
@@ -403,7 +403,7 @@ apiEntries_TH' =
   -- Resource Likes
   , ApiEntry_TH "ResourceLikes"
     [ ParNone_TH
-    , ParBy_TH "ByResourceLikesIds" ''Int64_L
+--    , ParBy_TH "ByResourceLikesIds" ''Int64_L
     , ParBy_TH "ByResourcesIds" ''Int64_L
     , ParBy_TH "ByResourceId" ''Int64
     ]
@@ -422,7 +422,7 @@ apiEntries_TH' =
 
   , ApiEntry_TH "ResourceLikeStats"
     [ ParBy_TH "ByResourcesIds" ''Int64_L
-    , ParBy_TH "ByResourceLikesIds" ''Int64_L
+--    , ParBy_TH "ByResourceLikesIds" ''Int64_L
     ]
     [ ApiGET_TH ''ResourceLikeStatResponses ]
 
