@@ -644,7 +644,12 @@ apiEntries_TH' =
     [ ApiGET_TH ''UserSanitizedStatResponse ]
 
 
+
+  --
   -- Packs
+  --
+
+
 
   -- Packs: Board
   , ApiEntry_TH "BoardPacks"
@@ -658,6 +663,8 @@ apiEntries_TH' =
     [ Par_TH [("board_id", ''Int64)] ]
     [ ApiGET_TH ''BoardPackResponse ]
 
+
+
   -- Packs: Organization
   , ApiEntry_TH "OrganizationPacks"
     [ ParNone_TH
@@ -668,6 +675,8 @@ apiEntries_TH' =
   , ApiEntry_TH "OrganizationPack"
     [ Par_TH [("organization_id", ''Int64)] ]
     [ ApiGET_TH ''OrganizationPackResponse ]
+
+
 
   -- Packs: Thread
   , ApiEntry_TH "ThreadPacks"
@@ -681,6 +690,8 @@ apiEntries_TH' =
     [ Par_TH [("thread_id", ''Int64)] ]
     [ ApiGET_TH ''ThreadPackResponse ]
 
+
+
   -- Packs: ThreadPost
   , ApiEntry_TH "ThreadPostPacks"
     [ ParNone_TH
@@ -693,6 +704,35 @@ apiEntries_TH' =
     [ Par_TH [("thread_post_id", ''Int64)] ]
     [ ApiGET_TH ''ThreadPostPackResponse ]
 
+
+
+  -- Packs: Resources
+  , ApiEntry_TH "ResourcePacks"
+    [ ParNone_TH
+    , ParBy_TH "ByResourcesIds" ''Int64_L
+    ]
+    [ ApiGET_TH ''ResourcePackResponses ]
+
+  , ApiEntry_TH "ResourcePack"
+    [ Par_TH [("resource_id", ''Int64)] ]
+    [ ApiGET_TH ''ResourcePackResponse ]
+
+
+
+  -- Packs: Leurons
+  , ApiEntry_TH "LeuronPacks"
+    [ ParNone_TH
+    , ParBy_TH "ByLeuronsIds" ''Int64_L
+    , ParBy_TH "ByResourceId" ''Int64_L
+    ]
+    [ ApiGET_TH ''LeuronPackResponses ]
+
+  , ApiEntry_TH "LeuronPack"
+    [ Par_TH [("leuron_id", ''Int64)] ]
+    [ ApiGET_TH ''LeuronPackResponse ]
+
+
+
   -- Packs: User
   , ApiEntry_TH "UserPacks"
     [ ParNone_TH
@@ -703,6 +743,8 @@ apiEntries_TH' =
   , ApiEntry_TH "UserPack"
     [ Par_TH [("user_id", ''Int64)] ]
     [ ApiGET_TH ''UserPackResponse ]
+
+
 
   -- Packs: UserSanitized
   , ApiEntry_TH "UserSanitizedPacks"
