@@ -47,6 +47,23 @@ mkExports
   , f ''LeuronResponse
   , f ''LeuronResponses
 
+  , f ''LeuronStatResponse
+  , f ''LeuronStatResponses
+
+  , f ''LeuronLikeRequest
+  , f ''LeuronLikeResponse
+  , f ''LeuronLikeResponses
+
+  , f ''LeuronLikeStatResponse
+  , f ''LeuronLikeStatResponses
+
+  , f ''LeuronStarRequest
+  , f ''LeuronStarResponse
+  , f ''LeuronStarResponses
+
+  , f ''LeuronStarStatResponse
+  , f ''LeuronStarStatResponses
+
   , f ''LeuronData
   , f ''Fact
   , f ''FactList
@@ -110,6 +127,23 @@ mkExports
   , f ''ResourceRequest
   , f ''ResourceResponse
   , f ''ResourceResponses
+
+  , f ''ResourceStatResponse
+  , f ''ResourceStatResponses
+
+  , f ''ResourceLikeRequest
+  , f ''ResourceLikeResponse
+  , f ''ResourceLikeResponses
+
+  , f ''ResourceLikeStatResponse
+  , f ''ResourceLikeStatResponses
+
+  , f ''ResourceStarRequest
+  , f ''ResourceStarResponse
+  , f ''ResourceStarResponses
+
+  , f ''ResourceStarStatResponse
+  , f ''ResourceStarStatResponses
 
   , f_with_eq ''Size
 
@@ -193,6 +227,12 @@ mkExports
 
   , f ''ThreadPostPackResponse
   , f ''ThreadPostPackResponses
+
+  , f ''ResourcePackResponse
+  , f ''ResourcePackResponses
+
+  , f ''LeuronPackResponse
+  , f ''LeuronPackResponses
 
   , f ''UserPackResponse
   , f ''UserPackResponses

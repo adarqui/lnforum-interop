@@ -239,15 +239,47 @@ apiEntries_TH' =
     , ApiDELETE_TH ''()
     ]
 
-{-
-  , ApiEntry_TH "LeuronStats"
-    [ ParNone_TH ]
-    [ ApiGET_TH ''LeuronStatResponses ]
+  , ApiEntry_TH "LeuronLikeStats"
+    [ ParBy_TH "ByLeuronsIds" ''Int64_L
+    , ParBy_TH "ByLeuronLikesIds" ''Int64_L
+    ]
+    [ ApiGET_TH ''LeuronLikeStatResponses ]
 
-  , ApiEntry_TH "LeuronStat"
-    [ Par_TH [("leuron_id", ''Int64)] ]
-    [ ApiGET_TH ''LeuronStatResponse ]
-    -}
+  , ApiEntry_TH "LeuronLikeStat"
+    [ Par_TH [("leuron_like_id", ''Int64)] ]
+    [ ApiGET_TH ''LeuronLikeStatResponse ]
+
+
+
+  -- Leuron Stars
+  , ApiEntry_TH "LeuronStars"
+    [ ParNone_TH
+--    , ParBy_TH "ByLeuronStarsIds" ''Int64_L
+    , ParBy_TH "ByLeuronsIds" ''Int64_L
+    , ParBy_TH "ByLeuronId" ''Int64
+    ]
+    [ ApiGET_TH ''LeuronStarResponses ]
+
+  , ApiEntry_TH "LeuronStar"
+    [ ParBy_TH "ByLeuronId" ''Int64 ]
+    [ ApiPOST_TH ''LeuronStarRequest ''LeuronStarResponse ]
+
+  , ApiEntry_TH "LeuronStar"
+    [ Par_TH [("leuron_star_id", ''Int64)] ]
+    [ ApiGET_TH ''LeuronStarResponse
+    , ApiPUT_TH ''LeuronStarRequest ''LeuronStarResponse
+    , ApiDELETE_TH ''()
+    ]
+
+  , ApiEntry_TH "LeuronStarStats"
+    [ ParBy_TH "ByLeuronsIds" ''Int64_L
+--    , ParBy_TH "ByLeuronStarsIds" ''Int64_L
+    ]
+    [ ApiGET_TH ''LeuronStarStatResponses ]
+
+  , ApiEntry_TH "LeuronStarStat"
+    [ Par_TH [("leuron_star_id", ''Int64)] ]
+    [ ApiGET_TH ''LeuronStarStatResponse ]
 
 
 
@@ -357,6 +389,78 @@ apiEntries_TH' =
     , ApiPUT_TH ''ResourceRequest ''ResourceResponse
     , ApiDELETE_TH ''()
     ]
+
+  , ApiEntry_TH "ResourceStats"
+    [ ParBy_TH "ByResourcesIds" ''Int64_L ]
+    [ ApiGET_TH ''ResourceStatResponses ]
+
+  , ApiEntry_TH "ResourceStat"
+    [ Par_TH [("resource_id", ''Int64)] ]
+    [ ApiGET_TH ''ResourceStatResponse ]
+
+
+
+  -- Resource Likes
+  , ApiEntry_TH "ResourceLikes"
+    [ ParNone_TH
+    , ParBy_TH "ByResourceLikesIds" ''Int64_L
+    , ParBy_TH "ByResourcesIds" ''Int64_L
+    , ParBy_TH "ByResourceId" ''Int64
+    ]
+    [ ApiGET_TH ''ResourceLikeResponses ]
+
+  , ApiEntry_TH "ResourceLike"
+    [ ParBy_TH "ByResourceId" ''Int64 ]
+    [ ApiPOST_TH ''ResourceLikeRequest ''ResourceLikeResponse ]
+
+  , ApiEntry_TH "ResourceLike"
+    [ Par_TH [("resource_like_id", ''Int64)] ]
+    [ ApiGET_TH ''ResourceLikeResponse
+    , ApiPUT_TH ''ResourceLikeRequest ''ResourceLikeResponse
+    , ApiDELETE_TH ''()
+    ]
+
+  , ApiEntry_TH "ResourceLikeStats"
+    [ ParBy_TH "ByResourcesIds" ''Int64_L
+    , ParBy_TH "ByResourceLikesIds" ''Int64_L
+    ]
+    [ ApiGET_TH ''ResourceLikeStatResponses ]
+
+  , ApiEntry_TH "ResourceLikeStat"
+    [ Par_TH [("resource_like_id", ''Int64)] ]
+    [ ApiGET_TH ''ResourceLikeStatResponse ]
+
+
+
+  -- Resource Stars
+  , ApiEntry_TH "ResourceStars"
+    [ ParNone_TH
+--    , ParBy_TH "ByResourceStarsIds" ''Int64_L
+    , ParBy_TH "ByResourcesIds" ''Int64_L
+    , ParBy_TH "ByResourceId" ''Int64
+    ]
+    [ ApiGET_TH ''ResourceStarResponses ]
+
+  , ApiEntry_TH "ResourceStar"
+    [ ParBy_TH "ByResourceId" ''Int64 ]
+    [ ApiPOST_TH ''ResourceStarRequest ''ResourceStarResponse ]
+
+  , ApiEntry_TH "ResourceStar"
+    [ Par_TH [("resource_star_id", ''Int64)] ]
+    [ ApiGET_TH ''ResourceStarResponse
+    , ApiPUT_TH ''ResourceStarRequest ''ResourceStarResponse
+    , ApiDELETE_TH ''()
+    ]
+
+  , ApiEntry_TH "ResourceStarStats"
+    [ ParBy_TH "ByResourcesIds" ''Int64_L
+--    , ParBy_TH "ByResourceStarsIds" ''Int64_L
+    ]
+    [ ApiGET_TH ''ResourceStarStatResponses ]
+
+  , ApiEntry_TH "ResourceStarStat"
+    [ Par_TH [("resource_star_id", ''Int64)] ]
+    [ ApiGET_TH ''ResourceStarStatResponse ]
 
 
 
