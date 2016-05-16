@@ -169,6 +169,8 @@ mkExports
   , f ''TeamRequest
   , f ''TeamResponse
   , f ''TeamResponses
+  , f ''TeamStatResponse
+  , f ''TeamStatResponses
 
   , f ''TestRequest
   , f ''TestResponse
@@ -229,11 +231,23 @@ mkExports
 
   -- Packs
   --
-  , f ''BoardPackResponse
-  , f ''BoardPackResponses
-
   , f ''OrganizationPackResponse
   , f ''OrganizationPackResponses
+
+  , f ''TeamPackResponse
+  , f ''TeamPackResponses
+
+  , f ''UserPackResponse
+  , f ''UserPackResponses
+
+  , f ''UserSanitizedPackResponse
+  , f ''UserSanitizedPackResponses
+
+  , f ''ForumPackResponse
+  , f ''ForumPackResponses
+
+  , f ''BoardPackResponse
+  , f ''BoardPackResponses
 
   , f ''ThreadPackResponse
   , f ''ThreadPackResponses
@@ -246,12 +260,6 @@ mkExports
 
   , f ''LeuronPackResponse
   , f ''LeuronPackResponses
-
-  , f ''UserPackResponse
-  , f ''UserPackResponses
-
-  , f ''UserSanitizedPackResponse
-  , f ''UserSanitizedPackResponses
   ]
 
 
