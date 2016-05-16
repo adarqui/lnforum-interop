@@ -37,6 +37,8 @@ mkExports
   , f ''EmptyResponse
   , f ''EmptyResponses
 
+  , f ''Entity
+
   , f ''ForumRequest
   , f ''ForumResponse
   , f ''ForumResponses
@@ -64,6 +66,13 @@ mkExports
   , f ''LeuronStarStatResponse
   , f ''LeuronStarStatResponses
 
+  , f ''LikeOpt
+  , f ''LikeRequest
+  , f ''LikeResponse
+  , f ''LikeResponses
+  , f ''LikeStatResponse
+  , f ''LikeStatResponses
+
   , f ''LeuronData
   , f ''Fact
   , f ''FactList
@@ -83,8 +92,6 @@ mkExports
   , f ''LinearDemo
   , f ''QA
   , f ''Table
-
-  , f ''LikeOpt
 
   , f ''OrganizationRequest
   , f ''OrganizationResponse
@@ -152,6 +159,12 @@ mkExports
 
 --  , f ''StyleResponse
 --  , f ''StyleResponses
+--
+  , f ''StarRequest
+  , f ''StarResponse
+  , f ''StarResponses
+  , f ''StarStatResponse
+  , f ''StarStatResponses
 
   , f ''TeamRequest
   , f ''TeamResponse
