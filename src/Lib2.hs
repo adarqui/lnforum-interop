@@ -651,6 +651,70 @@ apiEntries_TH' =
 
 
 
+  -- Packs: Organization
+  , ApiEntry_TH "OrganizationPacks"
+    [ ParNone_TH
+    , ParBy_TH "ByOrganizationsIds" ''Int64_L
+    ]
+    [ ApiGET_TH ''OrganizationPackResponses ]
+
+  , ApiEntry_TH "OrganizationPack"
+    [ Par_TH [("organization_id", ''Int64)] ]
+    [ ApiGET_TH ''OrganizationPackResponse ]
+
+
+
+  , ApiEntry_TH "TeamPacks"
+    [ ParNone_TH
+    ]
+    [ ApiGET_TH ''TeamPackResponses ]
+
+  , ApiEntry_TH "TeamPack"
+    [ Par_TH [("team_id", ''Int64)] ]
+    [ ApiGET_TH ''TeamPackResponse ]
+
+
+
+  -- Packs: User
+  , ApiEntry_TH "UserPacks"
+    [ ParNone_TH
+    , ParBy_TH "ByUsersIds" ''Int64_L
+    ]
+    [ ApiGET_TH ''UserPackResponses ]
+
+  , ApiEntry_TH "UserPack"
+    [ Par_TH [("user_id", ''Int64)] ]
+    [ ApiGET_TH ''UserPackResponse ]
+
+
+
+  -- Packs: UserSanitized
+  , ApiEntry_TH "UserSanitizedPacks"
+    [ ParNone_TH
+    , ParBy_TH "ByUsersIds" ''Int64_L
+    ]
+    [ ApiGET_TH ''UserSanitizedPackResponses ]
+
+  , ApiEntry_TH "UserSanitizedPack"
+    [ Par_TH [("user_id", ''Int64)] ]
+    [ ApiGET_TH ''UserSanitizedPackResponse ]
+
+
+
+  -- Packs: Forum
+  , ApiEntry_TH "ForumPacks"
+    [ ParNone_TH
+    , ParBy_TH "ByForumId" ''Int64
+    , ParBy_TH "ByForumsIds" ''Int64_L
+    ]
+    [ ApiGET_TH ''ForumPackResponses ]
+
+  , ApiEntry_TH "ForumPack"
+    [ Par_TH [("forum_id", ''Int64)] ]
+    [ ApiGET_TH ''ForumPackResponse ]
+
+
+
   -- Packs: Board
   , ApiEntry_TH "BoardPacks"
     [ ParNone_TH
@@ -662,19 +726,6 @@ apiEntries_TH' =
   , ApiEntry_TH "BoardPack"
     [ Par_TH [("board_id", ''Int64)] ]
     [ ApiGET_TH ''BoardPackResponse ]
-
-
-
-  -- Packs: Organization
-  , ApiEntry_TH "OrganizationPacks"
-    [ ParNone_TH
-    , ParBy_TH "ByOrganizationsIds" ''Int64_L
-    ]
-    [ ApiGET_TH ''OrganizationPackResponses ]
-
-  , ApiEntry_TH "OrganizationPack"
-    [ Par_TH [("organization_id", ''Int64)] ]
-    [ ApiGET_TH ''OrganizationPackResponse ]
 
 
 
@@ -732,30 +783,6 @@ apiEntries_TH' =
     [ ApiGET_TH ''LeuronPackResponse ]
 
 
-
-  -- Packs: User
-  , ApiEntry_TH "UserPacks"
-    [ ParNone_TH
-    , ParBy_TH "ByUsersIds" ''Int64_L
-    ]
-    [ ApiGET_TH ''UserPackResponses ]
-
-  , ApiEntry_TH "UserPack"
-    [ Par_TH [("user_id", ''Int64)] ]
-    [ ApiGET_TH ''UserPackResponse ]
-
-
-
-  -- Packs: UserSanitized
-  , ApiEntry_TH "UserSanitizedPacks"
-    [ ParNone_TH
-    , ParBy_TH "ByUsersIds" ''Int64_L
-    ]
-    [ ApiGET_TH ''UserSanitizedPackResponses ]
-
-  , ApiEntry_TH "UserSanitizedPack"
-    [ Par_TH [("user_id", ''Int64)] ]
-    [ ApiGET_TH ''UserSanitizedPackResponse ]
 
   ]
 
