@@ -243,11 +243,11 @@ apiEntries_TH' =
     [ ParBy_TH "ByLeuronsIds" ''Int64_L
 --    , ParBy_TH "ByLeuronLikesIds" ''Int64_L
     ]
-    [ ApiGET_TH ''LeuronLikeStatResponses ]
+    [ ApiGET_TH ''LikeStatResponses ]
 
   , ApiEntry_TH "LeuronLikeStat"
     [ Par_TH [("leuron_like_id", ''Int64)] ]
-    [ ApiGET_TH ''LeuronLikeStatResponse ]
+    [ ApiGET_TH ''LikeStatResponse ]
 
 
 
@@ -258,16 +258,16 @@ apiEntries_TH' =
     , ParBy_TH "ByLeuronsIds" ''Int64_L
     , ParBy_TH "ByLeuronId" ''Int64
     ]
-    [ ApiGET_TH ''LeuronStarResponses ]
+    [ ApiGET_TH ''StarResponses ]
 
   , ApiEntry_TH "LeuronStar"
     [ ParBy_TH "ByLeuronId" ''Int64 ]
-    [ ApiPOST_TH ''LeuronStarRequest ''LeuronStarResponse ]
+    [ ApiPOST_TH ''StarRequest ''StarResponse ]
 
   , ApiEntry_TH "LeuronStar"
     [ Par_TH [("leuron_star_id", ''Int64)] ]
-    [ ApiGET_TH ''LeuronStarResponse
-    , ApiPUT_TH ''LeuronStarRequest ''LeuronStarResponse
+    [ ApiGET_TH ''StarResponse
+    , ApiPUT_TH ''StarRequest ''StarResponse
     , ApiDELETE_TH ''()
     ]
 
@@ -275,11 +275,11 @@ apiEntries_TH' =
     [ ParBy_TH "ByLeuronsIds" ''Int64_L
 --    , ParBy_TH "ByLeuronStarsIds" ''Int64_L
     ]
-    [ ApiGET_TH ''LeuronStarStatResponses ]
+    [ ApiGET_TH ''StarStatResponses ]
 
   , ApiEntry_TH "LeuronStarStat"
     [ Par_TH [("leuron_star_id", ''Int64)] ]
-    [ ApiGET_TH ''LeuronStarStatResponse ]
+    [ ApiGET_TH ''StarStatResponse ]
 
 
 
@@ -407,16 +407,16 @@ apiEntries_TH' =
     , ParBy_TH "ByResourcesIds" ''Int64_L
     , ParBy_TH "ByResourceId" ''Int64
     ]
-    [ ApiGET_TH ''ResourceLikeResponses ]
+    [ ApiGET_TH ''LikeResponses ]
 
   , ApiEntry_TH "ResourceLike"
     [ ParBy_TH "ByResourceId" ''Int64 ]
-    [ ApiPOST_TH ''ResourceLikeRequest ''ResourceLikeResponse ]
+    [ ApiPOST_TH ''LikeRequest ''LikeResponse ]
 
   , ApiEntry_TH "ResourceLike"
     [ Par_TH [("resource_like_id", ''Int64)] ]
-    [ ApiGET_TH ''ResourceLikeResponse
-    , ApiPUT_TH ''ResourceLikeRequest ''ResourceLikeResponse
+    [ ApiGET_TH ''LikeResponse
+    , ApiPUT_TH ''LikeRequest ''LikeResponse
     , ApiDELETE_TH ''()
     ]
 
@@ -424,11 +424,11 @@ apiEntries_TH' =
     [ ParBy_TH "ByResourcesIds" ''Int64_L
 --    , ParBy_TH "ByResourceLikesIds" ''Int64_L
     ]
-    [ ApiGET_TH ''ResourceLikeStatResponses ]
+    [ ApiGET_TH ''LikeStatResponses ]
 
   , ApiEntry_TH "ResourceLikeStat"
     [ Par_TH [("resource_like_id", ''Int64)] ]
-    [ ApiGET_TH ''ResourceLikeStatResponse ]
+    [ ApiGET_TH ''LikeStatResponse ]
 
 
 
@@ -439,16 +439,16 @@ apiEntries_TH' =
     , ParBy_TH "ByResourcesIds" ''Int64_L
     , ParBy_TH "ByResourceId" ''Int64
     ]
-    [ ApiGET_TH ''ResourceStarResponses ]
+    [ ApiGET_TH ''StarResponses ]
 
   , ApiEntry_TH "ResourceStar"
     [ ParBy_TH "ByResourceId" ''Int64 ]
-    [ ApiPOST_TH ''ResourceStarRequest ''ResourceStarResponse ]
+    [ ApiPOST_TH ''StarRequest ''StarResponse ]
 
   , ApiEntry_TH "ResourceStar"
     [ Par_TH [("resource_star_id", ''Int64)] ]
-    [ ApiGET_TH ''ResourceStarResponse
-    , ApiPUT_TH ''ResourceStarRequest ''ResourceStarResponse
+    [ ApiGET_TH ''StarResponse
+    , ApiPUT_TH ''StarRequest ''StarResponse
     , ApiDELETE_TH ''()
     ]
 
@@ -456,11 +456,11 @@ apiEntries_TH' =
     [ ParBy_TH "ByResourcesIds" ''Int64_L
 --    , ParBy_TH "ByResourceStarsIds" ''Int64_L
     ]
-    [ ApiGET_TH ''ResourceStarStatResponses ]
+    [ ApiGET_TH ''StarStatResponses ]
 
   , ApiEntry_TH "ResourceStarStat"
     [ Par_TH [("resource_star_id", ''Int64)] ]
-    [ ApiGET_TH ''ResourceStarStatResponse ]
+    [ ApiGET_TH ''StarStatResponse ]
 
 
 
@@ -543,16 +543,16 @@ apiEntries_TH' =
     , ParBy_TH "ByThreadPostsIds" ''Int64_L
     , ParBy_TH "ByThreadPostId" ''Int64
     ]
-    [ ApiGET_TH ''ThreadPostLikeResponses ]
+    [ ApiGET_TH ''LikeResponses ]
 
   , ApiEntry_TH "ThreadPostLike"
     [ ParBy_TH "ByThreadPostId" ''Int64 ]
-    [ ApiPOST_TH ''ThreadPostLikeRequest ''ThreadPostLikeResponse ]
+    [ ApiPOST_TH ''LikeRequest ''LikeResponse ]
 
   , ApiEntry_TH "ThreadPostLike"
     [ Par_TH [("thread_post_like_id", ''Int64)] ]
-    [ ApiGET_TH ''ThreadPostLikeResponse
-    , ApiPUT_TH ''ThreadPostLikeRequest ''ThreadPostLikeResponse
+    [ ApiGET_TH ''LikeResponse
+    , ApiPUT_TH ''LikeRequest ''LikeResponse
     , ApiDELETE_TH ''()
     ]
 
@@ -560,11 +560,11 @@ apiEntries_TH' =
     [ ParBy_TH "ByThreadPostsIds" ''Int64_L
     , ParBy_TH "ByThreadPostLikesIds" ''Int64_L
     ]
-    [ ApiGET_TH ''ThreadPostLikeStatResponses ]
+    [ ApiGET_TH ''LikeStatResponses ]
 
   , ApiEntry_TH "ThreadPostLikeStat"
     [ Par_TH [("thread_post_like_id", ''Int64)] ]
-    [ ApiGET_TH ''ThreadPostLikeStatResponse ]
+    [ ApiGET_TH ''LikeStatResponse ]
 
 
 
@@ -575,16 +575,16 @@ apiEntries_TH' =
     , ParBy_TH "ByThreadPostsIds" ''Int64_L
     , ParBy_TH "ByThreadPostId" ''Int64
     ]
-    [ ApiGET_TH ''ThreadPostStarResponses ]
+    [ ApiGET_TH ''StarResponses ]
 
   , ApiEntry_TH "ThreadPostStar"
     [ ParBy_TH "ByThreadPostId" ''Int64 ]
-    [ ApiPOST_TH ''ThreadPostStarRequest ''ThreadPostStarResponse ]
+    [ ApiPOST_TH ''StarRequest ''StarResponse ]
 
   , ApiEntry_TH "ThreadPostStar"
     [ Par_TH [("thread_post_star_id", ''Int64)] ]
-    [ ApiGET_TH ''ThreadPostStarResponse
-    , ApiPUT_TH ''ThreadPostStarRequest ''ThreadPostStarResponse
+    [ ApiGET_TH ''StarResponse
+    , ApiPUT_TH ''StarRequest ''StarResponse
     , ApiDELETE_TH ''()
     ]
 
@@ -592,11 +592,11 @@ apiEntries_TH' =
     [ ParBy_TH "ByThreadPostsIds" ''Int64_L
     , ParBy_TH "ByThreadPostStarsIds" ''Int64_L
     ]
-    [ ApiGET_TH ''ThreadPostStarStatResponses ]
+    [ ApiGET_TH ''StarStatResponses ]
 
   , ApiEntry_TH "ThreadPostStarStat"
     [ Par_TH [("thread_post_star_id", ''Int64)] ]
-    [ ApiGET_TH ''ThreadPostStarStatResponse ]
+    [ ApiGET_TH ''StarStatResponse ]
 
 
 
@@ -616,6 +616,22 @@ apiEntries_TH' =
     [ Par_TH [("user_id", ''Int64)] ]
     [ ApiGET_TH ''UserResponse
     , ApiPUT_TH ''UserRequest ''UserResponse
+    , ApiDELETE_TH ''()
+    ]
+
+
+
+  -- User Profile
+  , ApiEntry_TH "UserProfiles"
+    [ ParNone_TH
+    , ParBy_TH "ByUsersIds" ''Int64_L
+    ]
+    [ ApiGET_TH ''ProfileResponses ]
+
+  , ApiEntry_TH "UserProfile"
+    [ Par_TH [("profile_id", ''Int64)] ]
+    [ ApiGET_TH ''ProfileResponse
+    , ApiPUT_TH ''ProfileRequest ''ProfileResponse
     , ApiDELETE_TH ''()
     ]
 
@@ -666,7 +682,7 @@ apiEntries_TH' =
 
   , ApiEntry_TH "TeamPacks"
     [ ParNone_TH
-    -- TODO FIXME: add ByOrganizationId
+    , ParBy_TH "ByOrganizationId" ''Int64
     ]
     [ ApiGET_TH ''TeamPackResponses ]
 
@@ -814,16 +830,32 @@ apiEntries_String_TH' =
     [ Par_TH [("organization_name", ''Text)] ]
     [ ApiGET_TH ''OrganizationResponse ]
 
+  , ApiEntry_TH "OrganizationPack"
+    [ Par_TH [("organization_name", ''Text)] ]
+    [ ApiGET_TH ''OrganizationPackResponse ]
+
   , ApiEntry_TH "Forum"
     [ ParBoth_TH [("forum_name", ''Text)] ("ByOrganizationName", ''Text) ]
     [ ApiGET_TH ''ForumResponse ]
+
+  , ApiEntry_TH "ForumPack"
+    [ ParBoth_TH [("forum_name", ''Text)] ("ByOrganizationName", ''Text) ]
+    [ ApiGET_TH ''ForumPackResponse ]
 
   , ApiEntry_TH "Board"
     [ ParBoth_TH [("board_name", ''Text)] ("ByForumId", ''Int64) ]
     [ ApiGET_TH ''BoardResponse ]
 
+  , ApiEntry_TH "BoardPack"
+    [ ParBoth_TH [("board_name", ''Text)] ("ByForumId", ''Int64) ]
+    [ ApiGET_TH ''BoardPackResponse ]
+
   , ApiEntry_TH "Thread"
     [ ParBoth_TH [("thread_name", ''Text)] ("ByBoardId", ''Int64) ]
     [ ApiGET_TH ''ThreadResponse ]
+
+  , ApiEntry_TH "ThreadPack"
+    [ ParBoth_TH [("thread_name", ''Text)] ("ByBoardId", ''Int64) ]
+    [ ApiGET_TH ''ThreadPackResponse ]
 
   ]

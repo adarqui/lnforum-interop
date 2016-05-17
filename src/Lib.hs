@@ -52,20 +52,6 @@ mkExports
   , f ''LeuronStatResponse
   , f ''LeuronStatResponses
 
-  , f ''LeuronLikeRequest
-  , f ''LeuronLikeResponse
-  , f ''LeuronLikeResponses
-
-  , f ''LeuronLikeStatResponse
-  , f ''LeuronLikeStatResponses
-
-  , f ''LeuronStarRequest
-  , f ''LeuronStarResponse
-  , f ''LeuronStarResponses
-
-  , f ''LeuronStarStatResponse
-  , f ''LeuronStarStatResponses
-
   , f ''LikeOpt
   , f ''LikeRequest
   , f ''LikeResponse
@@ -138,20 +124,6 @@ mkExports
   , f ''ResourceStatResponse
   , f ''ResourceStatResponses
 
-  , f ''ResourceLikeRequest
-  , f ''ResourceLikeResponse
-  , f ''ResourceLikeResponses
-
-  , f ''ResourceLikeStatResponse
-  , f ''ResourceLikeStatResponses
-
-  , f ''ResourceStarRequest
-  , f ''ResourceStarResponse
-  , f ''ResourceStarResponses
-
-  , f ''ResourceStarStatResponse
-  , f ''ResourceStarStatResponses
-
   , f_with_eq ''Size
 
   , f ''Splits
@@ -191,20 +163,6 @@ mkExports
 
   , f ''ThreadPostStatResponse
   , f ''ThreadPostStatResponses
-
-  , f ''ThreadPostLikeRequest
-  , f ''ThreadPostLikeResponse
-  , f ''ThreadPostLikeResponses
-
-  , f ''ThreadPostLikeStatResponse
-  , f ''ThreadPostLikeStatResponses
-
-  , f ''ThreadPostStarRequest
-  , f ''ThreadPostStarResponse
-  , f ''ThreadPostStarResponses
-
-  , f ''ThreadPostStarStatResponse
-  , f ''ThreadPostStarStatResponses
 
   , f ''UserRequest
   , f ''UserResponse
