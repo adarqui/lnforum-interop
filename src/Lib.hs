@@ -52,6 +52,7 @@ mkExports
   , f ''LeuronStatResponse
   , f ''LeuronStatResponses
 
+  , f ''LeuronTrainingSummary
   , f ''LeuronTrainingRequest
   , f ''LeuronTrainingResponse
   , f ''LeuronTrainingResponses
