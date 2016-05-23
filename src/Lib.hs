@@ -37,7 +37,7 @@ mkExports
   , f ''EmptyResponse
   , f ''EmptyResponses
 
-  , f ''Entity
+  , f ''Ent
 
   , f ''ForumRequest
   , f ''ForumResponse
@@ -52,6 +52,13 @@ mkExports
   , f ''LeuronStatResponse
   , f ''LeuronStatResponses
 
+  , f ''LeuronTrainingRequest
+  , f ''LeuronTrainingResponse
+  , f ''LeuronTrainingResponses
+
+  , f ''LeuronTrainingStatResponse
+  , f ''LeuronTrainingStatResponses
+
   , f ''LikeOpt
   , f ''LikeRequest
   , f ''LikeResponse
@@ -60,6 +67,7 @@ mkExports
   , f ''LikeStatResponses
 
   , f ''LeuronData
+  , f ''TyLeuron
   , f ''Fact
   , f ''FactList
   , f ''Card

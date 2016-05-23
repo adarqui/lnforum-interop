@@ -32,6 +32,7 @@ hs = defaultHaskellMks
 myPs :: [Mk]
 myPs =
   [ MkType
+  , MkTypeRows "R"
   , MkLens
   , MkMk
   , MkUnwrap
@@ -239,47 +240,89 @@ apiEntries_TH' =
     , ApiDELETE_TH ''()
     ]
 
-  , ApiEntry_TH "LeuronLikeStats"
-    [ ParBy_TH "ByLeuronsIds" ''Int64_L
---    , ParBy_TH "ByLeuronLikesIds" ''Int64_L
+
+
+  -- Likes
+  , ApiEntry_TH "Likes"
+    [ ParNone_TH
+    , ParBy_TH "ByThreadPostsIds" ''Int64_L
+    , ParBy_TH "ByThreadPostId" ''Int64
+    , ParBy_TH "ByResourceId" ''Int64
+    ]
+    [ ApiGET_TH ''LikeResponses ]
+
+  , ApiEntry_TH "Like"
+    [ ParBy_TH "ByThreadPostId" ''Int64
+    , ParBy_TH "ByLeuronId" ''Int64
+    ]
+    [ ApiPOST_TH ''LikeRequest ''LikeResponse ]
+
+  , ApiEntry_TH "Like"
+    [ Par_TH [("like_id", ''Int64)] ]
+    [ ApiGET_TH ''LikeResponse
+    , ApiPUT_TH ''LikeRequest ''LikeResponse
+    , ApiDELETE_TH ''()
+    ]
+
+  , ApiEntry_TH "LikeStats"
+    [ ParBy_TH "ByThreadPostsIds" ''Int64_L
     ]
     [ ApiGET_TH ''LikeStatResponses ]
 
-  , ApiEntry_TH "LeuronLikeStat"
-    [ Par_TH [("leuron_like_id", ''Int64)] ]
+  , ApiEntry_TH "LikeStat"
+    [ Par_TH [("like_id", ''Int64)] ]
     [ ApiGET_TH ''LikeStatResponse ]
 
 
 
-  -- Leuron Stars
-  , ApiEntry_TH "LeuronStars"
+  -- Stars
+  , ApiEntry_TH "Stars"
     [ ParNone_TH
---    , ParBy_TH "ByLeuronStarsIds" ''Int64_L
-    , ParBy_TH "ByLeuronsIds" ''Int64_L
+    , ParBy_TH "ByOrganizationId" ''Int64
+    , ParBy_TH "ByUserId" ''Int64
+    , ParBy_TH "ByBoardId" ''Int64
+    , ParBy_TH "ByThreadId" ''Int64
+    , ParBy_TH "ByThreadPostsIds" ''Int64_L
+    , ParBy_TH "ByThreadPostId" ''Int64
+    , ParBy_TH "ByResourceId" ''Int64
     , ParBy_TH "ByLeuronId" ''Int64
     ]
     [ ApiGET_TH ''StarResponses ]
 
-  , ApiEntry_TH "LeuronStar"
-    [ ParBy_TH "ByLeuronId" ''Int64 ]
+  , ApiEntry_TH "Star"
+    [ ParBy_TH "ByOrganizationId" ''Int64
+    , ParBy_TH "ByUserId" ''Int64
+    , ParBy_TH "ByBoardId" ''Int64
+    , ParBy_TH "ByThreadId" ''Int64
+    , ParBy_TH "ByThreadPostId" ''Int64
+    , ParBy_TH "ByResourceId" ''Int64
+    , ParBy_TH "ByLeuronId" ''Int64
+    ]
     [ ApiPOST_TH ''StarRequest ''StarResponse ]
 
-  , ApiEntry_TH "LeuronStar"
-    [ Par_TH [("leuron_star_id", ''Int64)] ]
+  , ApiEntry_TH "Star"
+    [ Par_TH [("star_id", ''Int64)] ]
     [ ApiGET_TH ''StarResponse
     , ApiPUT_TH ''StarRequest ''StarResponse
     , ApiDELETE_TH ''()
     ]
 
-  , ApiEntry_TH "LeuronStarStats"
-    [ ParBy_TH "ByLeuronsIds" ''Int64_L
---    , ParBy_TH "ByLeuronStarsIds" ''Int64_L
+  , ApiEntry_TH "StarStats"
+    [ ParBy_TH "ByOrganizationId" ''Int64
+    , ParBy_TH "ByUserId" ''Int64
+    , ParBy_TH "ByBoardId" ''Int64
+    , ParBy_TH "ByThreadId" ''Int64
+    , ParBy_TH "ByThreadPostsIds" ''Int64_L
+    , ParBy_TH "ByThreadPostId" ''Int64
+    , ParBy_TH "ByResourceId" ''Int64
+    , ParBy_TH "ByLeuronId" ''Int64
     ]
     [ ApiGET_TH ''StarStatResponses ]
 
-  , ApiEntry_TH "LeuronStarStat"
-    [ Par_TH [("leuron_star_id", ''Int64)] ]
+  , ApiEntry_TH "StarStat"
+    [ Par_TH [("star_id", ''Int64)] ]
     [ ApiGET_TH ''StarStatResponse ]
+
 
 
 
@@ -400,70 +443,6 @@ apiEntries_TH' =
 
 
 
-  -- Resource Likes
-  , ApiEntry_TH "ResourceLikes"
-    [ ParNone_TH
---    , ParBy_TH "ByResourceLikesIds" ''Int64_L
-    , ParBy_TH "ByResourcesIds" ''Int64_L
-    , ParBy_TH "ByResourceId" ''Int64
-    ]
-    [ ApiGET_TH ''LikeResponses ]
-
-  , ApiEntry_TH "ResourceLike"
-    [ ParBy_TH "ByResourceId" ''Int64 ]
-    [ ApiPOST_TH ''LikeRequest ''LikeResponse ]
-
-  , ApiEntry_TH "ResourceLike"
-    [ Par_TH [("resource_like_id", ''Int64)] ]
-    [ ApiGET_TH ''LikeResponse
-    , ApiPUT_TH ''LikeRequest ''LikeResponse
-    , ApiDELETE_TH ''()
-    ]
-
-  , ApiEntry_TH "ResourceLikeStats"
-    [ ParBy_TH "ByResourcesIds" ''Int64_L
---    , ParBy_TH "ByResourceLikesIds" ''Int64_L
-    ]
-    [ ApiGET_TH ''LikeStatResponses ]
-
-  , ApiEntry_TH "ResourceLikeStat"
-    [ Par_TH [("resource_like_id", ''Int64)] ]
-    [ ApiGET_TH ''LikeStatResponse ]
-
-
-
-  -- Resource Stars
-  , ApiEntry_TH "ResourceStars"
-    [ ParNone_TH
---    , ParBy_TH "ByResourceStarsIds" ''Int64_L
-    , ParBy_TH "ByResourcesIds" ''Int64_L
-    , ParBy_TH "ByResourceId" ''Int64
-    ]
-    [ ApiGET_TH ''StarResponses ]
-
-  , ApiEntry_TH "ResourceStar"
-    [ ParBy_TH "ByResourceId" ''Int64 ]
-    [ ApiPOST_TH ''StarRequest ''StarResponse ]
-
-  , ApiEntry_TH "ResourceStar"
-    [ Par_TH [("resource_star_id", ''Int64)] ]
-    [ ApiGET_TH ''StarResponse
-    , ApiPUT_TH ''StarRequest ''StarResponse
-    , ApiDELETE_TH ''()
-    ]
-
-  , ApiEntry_TH "ResourceStarStats"
-    [ ParBy_TH "ByResourcesIds" ''Int64_L
---    , ParBy_TH "ByResourceStarsIds" ''Int64_L
-    ]
-    [ ApiGET_TH ''StarStatResponses ]
-
-  , ApiEntry_TH "ResourceStarStat"
-    [ Par_TH [("resource_star_id", ''Int64)] ]
-    [ ApiGET_TH ''StarStatResponse ]
-
-
-
   -- Team
   , ApiEntry_TH "Teams"
     [ ParNone_TH ]
@@ -536,67 +515,6 @@ apiEntries_TH' =
 
 
 
-  -- Thread Post Likes
-  , ApiEntry_TH "ThreadPostLikes"
-    [ ParNone_TH
-    , ParBy_TH "ByThreadPostLikesIds" ''Int64_L
-    , ParBy_TH "ByThreadPostsIds" ''Int64_L
-    , ParBy_TH "ByThreadPostId" ''Int64
-    ]
-    [ ApiGET_TH ''LikeResponses ]
-
-  , ApiEntry_TH "ThreadPostLike"
-    [ ParBy_TH "ByThreadPostId" ''Int64 ]
-    [ ApiPOST_TH ''LikeRequest ''LikeResponse ]
-
-  , ApiEntry_TH "ThreadPostLike"
-    [ Par_TH [("thread_post_like_id", ''Int64)] ]
-    [ ApiGET_TH ''LikeResponse
-    , ApiPUT_TH ''LikeRequest ''LikeResponse
-    , ApiDELETE_TH ''()
-    ]
-
-  , ApiEntry_TH "ThreadPostLikeStats"
-    [ ParBy_TH "ByThreadPostsIds" ''Int64_L
-    , ParBy_TH "ByThreadPostLikesIds" ''Int64_L
-    ]
-    [ ApiGET_TH ''LikeStatResponses ]
-
-  , ApiEntry_TH "ThreadPostLikeStat"
-    [ Par_TH [("thread_post_like_id", ''Int64)] ]
-    [ ApiGET_TH ''LikeStatResponse ]
-
-
-
-  -- Thread Post Stars
-  , ApiEntry_TH "ThreadPostStars"
-    [ ParNone_TH
-    , ParBy_TH "ByThreadPostStarsIds" ''Int64_L
-    , ParBy_TH "ByThreadPostsIds" ''Int64_L
-    , ParBy_TH "ByThreadPostId" ''Int64
-    ]
-    [ ApiGET_TH ''StarResponses ]
-
-  , ApiEntry_TH "ThreadPostStar"
-    [ ParBy_TH "ByThreadPostId" ''Int64 ]
-    [ ApiPOST_TH ''StarRequest ''StarResponse ]
-
-  , ApiEntry_TH "ThreadPostStar"
-    [ Par_TH [("thread_post_star_id", ''Int64)] ]
-    [ ApiGET_TH ''StarResponse
-    , ApiPUT_TH ''StarRequest ''StarResponse
-    , ApiDELETE_TH ''()
-    ]
-
-  , ApiEntry_TH "ThreadPostStarStats"
-    [ ParBy_TH "ByThreadPostsIds" ''Int64_L
-    , ParBy_TH "ByThreadPostStarsIds" ''Int64_L
-    ]
-    [ ApiGET_TH ''StarStatResponses ]
-
-  , ApiEntry_TH "ThreadPostStarStat"
-    [ Par_TH [("thread_post_star_id", ''Int64)] ]
-    [ ApiGET_TH ''StarStatResponse ]
 
 
 
@@ -723,6 +641,8 @@ apiEntries_TH' =
     [ ParNone_TH
     , ParBy_TH "ByForumId" ''Int64
     , ParBy_TH "ByForumsIds" ''Int64_L
+    , ParBy_TH "ByOrganizationId" ''Int64
+    , ParBy_TH "ByOrganizationName" ''Text
     ]
     [ ApiGET_TH ''ForumPackResponses ]
 
@@ -737,6 +657,7 @@ apiEntries_TH' =
     [ ParNone_TH
     , ParBy_TH "ByForumId" ''Int64
     , ParBy_TH "ByBoardsIds" ''Int64_L
+    , ParBy_TH "ByBoardId" ''Int64
     ]
     [ ApiGET_TH ''BoardPackResponses ]
 
