@@ -68,7 +68,7 @@ mkExports
   , f ''LikeStatResponses
 
   , f ''LeuronData
-  , f ''TyLeuron
+  , f_with_eq ''TyLeuron
   , f ''Fact
   , f ''FactList
   , f ''Card
@@ -87,6 +87,8 @@ mkExports
   , f ''LinearDemo
   , f ''QA
   , f ''Table
+
+  , f_with_eq ''Membership
 
   , f ''OrganizationRequest
   , f ''OrganizationResponse
@@ -126,6 +128,7 @@ mkExports
   , f ''ReminderFolderResponses
 
   , f ''ResourceType
+  , f_with_eq ''TyResourceType
   , f ''ResourceRequest
   , f ''ResourceResponse
   , f ''ResourceResponses
@@ -136,7 +139,10 @@ mkExports
   , f_with_eq ''Size
 
   , f ''Splits
+  , f_with_eq ''TySplits
+
   , f ''Substitutions
+  , f_with_eq ''TySubstitutions
 
 --  , f ''StyleResponse
 --  , f ''StyleResponses
@@ -181,7 +187,7 @@ mkExports
   , f ''UserSanitizedStatResponse
   , f ''UserSanitizedStatResponses
 
-  , f ''Visibility
+  , f_with_eq ''Visibility
 
 {-
   , f ''WorkoutRequest
@@ -227,6 +233,81 @@ mkExports
 
   , f ''LeuronPackResponse
   , f ''LeuronPackResponses
+  ]
+
+
+
+mkConvert
+  (Options
+    (defaultOptionsCleanPurescript "/tmp/LN.Convert.purs")
+    (MkGHeader "import LN.T.Internal.Types\n" : (defaultPurescriptMkGs "module LN.T.Internal.Convert where"))
+    (defaultOptions_Haskell_adarqui "/tmp/LN.Convert.hs")
+    (MkGHeader "import LN.T.Internal.Types\nimport Data.Int\n" : (defaultHaskellMkGs $ tplTestHeader "LN.T.Internal.Convert")))
+  [ (''ApiRequest, ''ApiResponse)
+  , (''ApiResponse, ''ApiRequest)
+
+  , (''BoardRequest, ''BoardResponse)
+  , (''BoardResponse, ''BoardRequest)
+
+  , (''BucketRequest, ''BucketResponse)
+  , (''BucketResponse, ''BucketRequest)
+
+  , (''EmptyRequest, ''EmptyResponse)
+  , (''EmptyResponse, ''EmptyRequest)
+
+  , (''ForumRequest, ''ForumResponse)
+  , (''ForumResponse, ''ForumRequest)
+
+  , (''LeuronRequest, ''LeuronResponse)
+  , (''LeuronResponse, ''LeuronRequest)
+
+  , (''LeuronTrainingRequest, ''LeuronTrainingResponse)
+  , (''LeuronTrainingResponse, ''LeuronTrainingRequest)
+
+  , (''LikeRequest, ''LikeResponse)
+  , (''LikeResponse, ''LikeRequest)
+
+  , (''OrganizationRequest, ''OrganizationResponse)
+  , (''OrganizationResponse, ''OrganizationRequest)
+
+  , (''PmRequest, ''PmResponse)
+  , (''PmResponse, ''PmRequest)
+
+  , (''PmInRequest, ''PmInResponse)
+  , (''PmInResponse, ''PmInRequest)
+
+  , (''PmOutRequest, ''PmOutResponse)
+  , (''PmOutResponse, ''PmOutRequest)
+
+  , (''ProfileRequest, ''ProfileResponse)
+  , (''ProfileResponse, ''ProfileRequest)
+
+  , (''ReminderRequest, ''ReminderResponse)
+  , (''ReminderResponse, ''ReminderRequest)
+
+  , (''ReminderFolderRequest, ''ReminderFolderResponse)
+  , (''ReminderFolderResponse, ''ReminderFolderRequest)
+
+  , (''ResourceRequest, ''ResourceResponse)
+  , (''ResourceResponse, ''ResourceRequest)
+
+  , (''StarRequest, ''StarResponse)
+  , (''StarResponse, ''StarRequest)
+
+  , (''TeamRequest, ''TeamResponse)
+  , (''TeamResponse, ''TeamRequest)
+
+  , (''ThreadRequest, ''ThreadResponse)
+  , (''ThreadResponse, ''ThreadRequest)
+
+  , (''ThreadPostRequest, ''ThreadPostResponse)
+  , (''ThreadPostResponse, ''ThreadPostRequest)
+
+  , (''UserRequest, ''UserResponse)
+  , (''UserResponse, ''UserRequest)
+
+  , (''UserRequest, ''UserSanitizedResponse)
+  , (''UserSanitizedResponse, ''UserRequest)
   ]
 
 

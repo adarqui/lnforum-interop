@@ -230,7 +230,7 @@ apiEntries_TH' =
     [ ApiGET_TH ''LeuronResponses ]
 
   , ApiEntry_TH "Leuron"
-    [ ParNone_TH ]
+    [ ParBy_TH "ByResourceId" ''Int64]
     [ ApiPOST_TH ''LeuronRequest ''LeuronResponse ]
 
   , ApiEntry_TH "Leuron"
