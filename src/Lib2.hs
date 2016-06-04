@@ -206,7 +206,7 @@ apiEntries_TH' =
     [ ApiGET_TH ''ForumResponses ]
 
   , ApiEntry_TH "Forum"
-    [ ParNone_TH ]
+    [ ParBy_TH "ByOrganizationId" ''Int64 ]
     [ ApiPOST_TH ''ForumRequest ''ForumResponse ]
 
   , ApiEntry_TH "Forum"
