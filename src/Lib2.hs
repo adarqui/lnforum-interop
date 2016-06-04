@@ -8,13 +8,15 @@ module Lib2 (
   hs,
   ps,
   apiSpec_TH,
-  apiSpec_String_TH
+  apiSpec_String_TH,
+  haskellApiImports
 ) where
 
 
 
 import           Data.Int
-import           Data.Text (Text)
+import           Data.List
+-- import           Data.String (String)
 import           Haskell.Interop.Prime
 import           LN.T
 
@@ -197,7 +199,7 @@ apiEntries_TH' =
   -- Forum
   , ApiEntry_TH "Forums"
     [ ParNone_TH
-    , ParBy_TH "ByOrganizationName" ''Text
+    , ParBy_TH "ByOrganizationName" ''String
     , ParBy_TH "ByForumsIds" ''Int64_L
     , ParBy_TH "ByOrganizationId" ''Int64
     ]
@@ -369,7 +371,9 @@ apiEntries_TH' =
     [ ApiGET_TH ''PmResponses ]
 
   , ApiEntry_TH "Pm"
-    [ ParNone_TH ]
+    [ ParBy_TH "ByUsersIds" ''Int64_L
+    , ParBy_TH "ByUserId" ''Int64
+    ]
     [ ApiPOST_TH ''PmRequest ''PmResponse ]
 
   , ApiEntry_TH "Pm"
@@ -642,7 +646,7 @@ apiEntries_TH' =
     , ParBy_TH "ByForumId" ''Int64
     , ParBy_TH "ByForumsIds" ''Int64_L
     , ParBy_TH "ByOrganizationId" ''Int64
-    , ParBy_TH "ByOrganizationName" ''Text
+    , ParBy_TH "ByOrganizationName" ''String
     ]
     [ ApiGET_TH ''ForumPackResponses ]
 
@@ -744,39 +748,52 @@ apiEntries_String_TH' =
 
   -- Packs: UserSanitized
     ApiEntry_TH "UserSanitizedPack"
-    [ Par_TH [("user_nick", ''Text)] ]
+    [ Par_TH [("user_nick", ''String)] ]
     [ ApiGET_TH ''UserSanitizedPackResponse ]
 
   , ApiEntry_TH "Organization"
-    [ Par_TH [("organization_name", ''Text)] ]
+    [ Par_TH [("organization_name", ''String)] ]
     [ ApiGET_TH ''OrganizationResponse ]
 
   , ApiEntry_TH "OrganizationPack"
-    [ Par_TH [("organization_name", ''Text)] ]
+    [ Par_TH [("organization_name", ''String)] ]
     [ ApiGET_TH ''OrganizationPackResponse ]
 
   , ApiEntry_TH "Forum"
-    [ ParBoth_TH [("forum_name", ''Text)] ("ByOrganizationName", ''Text) ]
+    [ ParBoth_TH [("forum_name", ''String)] ("ByOrganizationName", ''String) ]
     [ ApiGET_TH ''ForumResponse ]
 
   , ApiEntry_TH "ForumPack"
-    [ ParBoth_TH [("forum_name", ''Text)] ("ByOrganizationName", ''Text) ]
+    [ ParBoth_TH [("forum_name", ''String)] ("ByOrganizationName", ''String) ]
     [ ApiGET_TH ''ForumPackResponse ]
 
   , ApiEntry_TH "Board"
-    [ ParBoth_TH [("board_name", ''Text)] ("ByForumId", ''Int64) ]
+    [ ParBoth_TH [("board_name", ''String)] ("ByForumId", ''Int64) ]
     [ ApiGET_TH ''BoardResponse ]
 
   , ApiEntry_TH "BoardPack"
-    [ ParBoth_TH [("board_name", ''Text)] ("ByForumId", ''Int64) ]
+    [ ParBoth_TH [("board_name", ''String)] ("ByForumId", ''Int64) ]
     [ ApiGET_TH ''BoardPackResponse ]
 
   , ApiEntry_TH "Thread"
-    [ ParBoth_TH [("thread_name", ''Text)] ("ByBoardId", ''Int64) ]
+    [ ParBoth_TH [("thread_name", ''String)] ("ByBoardId", ''Int64) ]
     [ ApiGET_TH ''ThreadResponse ]
 
   , ApiEntry_TH "ThreadPack"
-    [ ParBoth_TH [("thread_name", ''Text)] ("ByBoardId", ''Int64) ]
+    [ ParBoth_TH [("thread_name", ''String)] ("ByBoardId", ''Int64) ]
     [ ApiGET_TH ''ThreadPackResponse ]
 
+  ]
+
+
+
+
+haskellApiImports :: String
+haskellApiImports =
+  intercalate "\n" $
+  ["import Data.Int"
+  , "import LN.T hiding (Param(..), QueryParam, SortOrderBy(..), OrderBy(..), ParamTag(..))"
+  , "import LN.T.Param.String"
+  , ""
+  , ""
   ]

@@ -317,7 +317,7 @@ mkApi
     ((defaultOptionsCleanPurescript "/tmp/LN.Api.purs") { debug = True })
     (MkGHeader "import Prelude\nimport Data.Either\nimport LN.T.Internal.Types\n" : (defaultPurescriptApiMkGs "module LN.Api.Internal where"))
     ((defaultOptionsCleanHaskell "/tmp/LN.Api.hs" ) { debug = True })
-    (MkGHeader "import LN.T\nimport Data.Int\nimport Data.Text (Text)\n" : (defaultHaskellApiMkGs $ tplTestHeader "LN.Api.Internal")))
+    (MkGHeader haskellApiImports : (defaultHaskellApiMkGs $ tplTestHeader "LN.Api.Internal")))
   apiSpec_TH
 
 
@@ -327,5 +327,5 @@ mkApi
     ((defaultOptionsCleanPurescript "/tmp/LN.Api.String.purs") { debug = True })
     (MkGHeader "import Prelude\nimport Data.Either\nimport LN.T.Internal.Types\n" : (defaultPurescriptApiMkGs "module LN.Api.Internal.String where"))
     ((defaultOptionsCleanHaskell "/tmp/LN.Api.String.hs" ) { debug = True })
-    (MkGHeader "import LN.T\nimport Data.Int\nimport Data.Text (Text)\n" : (defaultHaskellApiMkGs $ tplTestHeader "LN.Api.Internal.String")))
+    (MkGHeader haskellApiImports : (defaultHaskellApiMkGs $ tplTestHeader "LN.Api.Internal.String")))
   apiSpec_String_TH
