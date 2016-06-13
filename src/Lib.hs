@@ -45,6 +45,24 @@ mkExports
   , f ''ForumStatResponse
   , f ''ForumStatResponses
 
+  , f ''GlobalGroupRequest
+  , f ''GlobalGroupResponse
+  , f ''GlobalGroupResponses
+  , f ''GlobalGroupStatResponse
+  , f ''GlobalGroupStatResponses
+
+  , f ''GroupRequest
+  , f ''GroupResponse
+  , f ''GroupResponses
+  , f ''GroupStatResponse
+  , f ''GroupStatResponses
+
+  , f ''GroupMemberRequest
+  , f ''GroupMemberResponse
+  , f ''GroupMemberResponses
+  , f ''GroupMemberStatResponse
+  , f ''GroupMemberStatResponses
+
   , f ''LeuronRequest
   , f ''LeuronResponse
   , f ''LeuronResponses
@@ -159,6 +177,12 @@ mkExports
   , f ''TeamStatResponse
   , f ''TeamStatResponses
 
+  , f ''TeamMemberRequest
+  , f ''TeamMemberResponse
+  , f ''TeamMemberResponses
+  , f ''TeamMemberStatResponse
+  , f ''TeamMemberStatResponses
+
   , f ''TestRequest
   , f ''TestResponse
   , f ''TestResponses
@@ -210,11 +234,23 @@ mkExports
   , f ''TeamPackResponse
   , f ''TeamPackResponses
 
+  , f ''TeamMemberPackResponse
+  , f ''TeamMemberPackResponses
+
   , f ''UserPackResponse
   , f ''UserPackResponses
 
   , f ''UserSanitizedPackResponse
   , f ''UserSanitizedPackResponses
+
+  , f ''GlobalGroupPackResponse
+  , f ''GlobalGroupPackResponses
+
+  , f ''GroupPackResponse
+  , f ''GroupPackResponses
+
+  , f ''GroupMemberPackResponse
+  , f ''GroupMemberPackResponses
 
   , f ''ForumPackResponse
   , f ''ForumPackResponses

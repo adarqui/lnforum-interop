@@ -159,7 +159,39 @@ apiEntries_TH' =
 
   -- Teams Count
   , ApiEntry_TH "TeamsCount"
-    [ ParNone_TH ]
+    [ ParNone_TH
+    , ParBy_TH "ByOrganizationId" ''Int64
+    ]
+    [ ApiGET_TH ''CountResponses ]
+
+  -- TeamMembers Count
+  , ApiEntry_TH "TeamMembersCount"
+    [ ParNone_TH
+    , ParBy_TH "ByOrganizationId" ''Int64
+    , ParBy_TH "ByTeamId" ''Int64
+    ]
+    [ ApiGET_TH ''CountResponses ]
+
+  -- GlobalGroups Count
+  , ApiEntry_TH "GlobalGroupsCount"
+    [ ParNone_TH
+    , ParBy_TH "ByUserId" ''Int64
+    ]
+    [ ApiGET_TH ''CountResponses ]
+
+  -- Groups Count
+  , ApiEntry_TH "GroupsCount"
+    [ ParNone_TH
+    , ParBy_TH "ByOrganizationId" ''Int64
+    ]
+    [ ApiGET_TH ''CountResponses ]
+
+  -- GroupMembers Count
+  , ApiEntry_TH "GroupMembersCount"
+    [ ParNone_TH
+    , ParBy_TH "ByOrganizationId" ''Int64
+    , ParBy_TH "ByGroupId" ''Int64
+    ]
     [ ApiGET_TH ''CountResponses ]
 
   -- Forums Count
@@ -225,6 +257,68 @@ apiEntries_TH' =
   , ApiEntry_TH "ForumStat"
     [ Par_TH [("forum_id", ''Int64)] ]
     [ ApiGET_TH ''ForumStatResponse ]
+
+
+
+  -- GlobalGroup
+  , ApiEntry_TH "GlobalGroups"
+    [ ParNone_TH
+    , ParBy_TH "ByOrganizationId" ''Int64
+    ]
+    [ ApiGET_TH ''GlobalGroupResponses ]
+
+  , ApiEntry_TH "GlobalGroup"
+    [ ParNone_TH ]
+    [ ApiPOST_TH ''GlobalGroupRequest ''GlobalGroupResponse ]
+
+  , ApiEntry_TH "GlobalGroup"
+    [ Par_TH [("global_group_id", ''Int64)] ]
+    [ ApiGET_TH ''GlobalGroupResponse
+    , ApiPUT_TH ''GlobalGroupRequest ''GlobalGroupResponse
+    , ApiDELETE_TH ''()
+    ]
+
+
+
+  -- Group
+  , ApiEntry_TH "Groups"
+    [ ParNone_TH
+    , ParBy_TH "ByOrganizationId" ''Int64
+    ]
+    [ ApiGET_TH ''GroupResponses ]
+
+  , ApiEntry_TH "Group"
+    [ ParBy_TH "ByOrganizationId" ''Int64 ]
+    [ ApiPOST_TH ''GroupRequest ''GroupResponse ]
+
+  , ApiEntry_TH "Group"
+    [ Par_TH [("group_id", ''Int64)] ]
+    [ ApiGET_TH ''GroupResponse
+    , ApiPUT_TH ''GroupRequest ''GroupResponse
+    , ApiDELETE_TH ''()
+    ]
+
+
+
+  -- GroupMember
+  , ApiEntry_TH "GroupMembers"
+    [ ParNone_TH
+    , ParBy_TH "ByOrganizationId" ''Int64
+    , ParBy_TH "ByGlobalGroupId" ''Int64
+    , ParBy_TH "ByGroupId" ''Int64
+    ]
+    [ ApiGET_TH ''GroupMemberResponses ]
+
+  , ApiEntry_TH "GroupMember"
+    [ ParBy_TH "ByGlobalGroupId" ''Int64 ]
+    [ ApiPOST_TH ''GroupMemberRequest ''GroupMemberResponse ]
+
+  , ApiEntry_TH "GroupMember"
+    [ Par_TH [("group_member_id", ''Int64)] ]
+    [ ApiGET_TH ''GroupMemberResponse
+    , ApiPUT_TH ''GroupMemberRequest ''GroupMemberResponse
+    , ApiDELETE_TH ''()
+    ]
 
 
 
@@ -451,17 +545,40 @@ apiEntries_TH' =
 
   -- Team
   , ApiEntry_TH "Teams"
-    [ ParNone_TH ]
+    [ ParNone_TH
+    , ParBy_TH "ByOrganizationId" ''Int64
+    ]
     [ ApiGET_TH ''TeamResponses ]
 
   , ApiEntry_TH "Team"
-    [ ParNone_TH ]
+    [ ParBy_TH "ByOrganizationId" ''Int64 ]
     [ ApiPOST_TH ''TeamRequest ''TeamResponse ]
 
   , ApiEntry_TH "Team"
     [ Par_TH [("team_id", ''Int64)] ]
     [ ApiGET_TH ''TeamResponse
     , ApiPUT_TH ''TeamRequest ''TeamResponse
+    , ApiDELETE_TH ''()
+    ]
+
+
+
+  -- TeamMember
+  , ApiEntry_TH "TeamMembers"
+    [ ParNone_TH
+    , ParBy_TH "ByOrganizationId" ''Int64
+    , ParBy_TH "ByTeamId" ''Int64
+    ]
+    [ ApiGET_TH ''TeamMemberResponses ]
+
+  , ApiEntry_TH "TeamMember"
+    [ ParBy_TH "ByTeamId" ''Int64 ]
+    [ ApiPOST_TH ''TeamMemberRequest ''TeamMemberResponse ]
+
+  , ApiEntry_TH "TeamMember"
+    [ Par_TH [("team_id", ''Int64)] ]
+    [ ApiGET_TH ''TeamMemberResponse
+    , ApiPUT_TH ''TeamMemberRequest ''TeamMemberResponse
     , ApiDELETE_TH ''()
     ]
 
@@ -604,6 +721,7 @@ apiEntries_TH' =
 
 
 
+  -- Packs: Team
   , ApiEntry_TH "TeamPacks"
     [ ParNone_TH
     , ParBy_TH "ByOrganizationId" ''Int64
@@ -613,6 +731,19 @@ apiEntries_TH' =
   , ApiEntry_TH "TeamPack"
     [ Par_TH [("team_id", ''Int64)] ]
     [ ApiGET_TH ''TeamPackResponse ]
+
+
+
+  -- Packs: TeamMember
+  , ApiEntry_TH "TeamMemberPacks"
+    [ ParNone_TH
+    , ParBy_TH "ByOrganizationId" ''Int64
+    ]
+    [ ApiGET_TH ''TeamMemberPackResponses ]
+
+  , ApiEntry_TH "TeamMemberPack"
+    [ Par_TH [("team_member_id", ''Int64)] ]
+    [ ApiGET_TH ''TeamMemberPackResponse ]
 
 
 
@@ -639,6 +770,47 @@ apiEntries_TH' =
   , ApiEntry_TH "UserSanitizedPack"
     [ Par_TH [("user_id", ''Int64)] ]
     [ ApiGET_TH ''UserSanitizedPackResponse ]
+
+
+
+  -- Packs: GlobalGroup
+  , ApiEntry_TH "GlobalGroupPacks"
+    [ ParNone_TH
+    , ParBy_TH "ByOrganizationId" ''Int64
+    ]
+    [ ApiGET_TH ''GlobalGroupPackResponses ]
+
+  , ApiEntry_TH "GlobalGroupPack"
+    [ Par_TH [("global_group_id", ''Int64)] ]
+    [ ApiGET_TH ''GlobalGroupPackResponse ]
+
+
+
+  -- Packs: Group
+  , ApiEntry_TH "GroupPacks"
+    [ ParNone_TH
+    , ParBy_TH "ByOrganizationId" ''Int64
+    ]
+    [ ApiGET_TH ''GroupPackResponses ]
+
+  , ApiEntry_TH "GroupPack"
+    [ Par_TH [("group_id", ''Int64)] ]
+    [ ApiGET_TH ''GroupPackResponse ]
+
+
+
+  -- Packs: GroupMember
+  , ApiEntry_TH "GroupMemberPacks"
+    [ ParNone_TH
+    , ParBy_TH "ByOrganizationId" ''Int64
+    , ParBy_TH "ByGlobalGroupId" ''Int64
+    , ParBy_TH "ByGroupId" ''Int64
+    ]
+    [ ApiGET_TH ''GroupMemberPackResponses ]
+
+  , ApiEntry_TH "GroupMemberPack"
+    [ Par_TH [("group_member_id", ''Int64)] ]
+    [ ApiGET_TH ''GroupMemberPackResponse ]
 
 
 
@@ -760,6 +932,30 @@ apiEntries_String_TH' =
   , ApiEntry_TH "OrganizationPack"
     [ Par_TH [("organization_name", ''String)] ]
     [ ApiGET_TH ''OrganizationPackResponse ]
+
+  , ApiEntry_TH "Team"
+    [ ParBoth_TH [("team_name", ''String)] ("ByOrganizationId", ''Int64) ]
+    [ ApiGET_TH ''TeamResponse ]
+
+  , ApiEntry_TH "TeamPack"
+    [ ParBoth_TH [("team_name", ''String)] ("ByOrganizationId", ''Int64) ]
+    [ ApiGET_TH ''TeamPackResponse ]
+
+  , ApiEntry_TH "GlobalGroup"
+    [ ParBoth_TH [("global_group_name", ''String)] ("ByOrganizationId", ''Int64) ]
+    [ ApiGET_TH ''GlobalGroupResponse ]
+
+  , ApiEntry_TH "GlobalGroupPack"
+    [ ParBoth_TH [("global_group_name", ''String)] ("ByOrganizationId", ''Int64) ]
+    [ ApiGET_TH ''GlobalGroupPackResponse ]
+
+  , ApiEntry_TH "Group"
+    [ ParBoth_TH [("group_name", ''String)] ("ByOrganizationId", ''Int64) ]
+    [ ApiGET_TH ''GroupResponse ]
+
+  , ApiEntry_TH "GroupPack"
+    [ ParBoth_TH [("group_name", ''String)] ("ByOrganizationId", ''Int64) ]
+    [ ApiGET_TH ''GroupPackResponse ]
 
   , ApiEntry_TH "Forum"
     [ ParBoth_TH [("forum_name", ''String)] ("ByOrganizationId", ''Int64) ]
