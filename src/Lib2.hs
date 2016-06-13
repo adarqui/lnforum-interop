@@ -762,11 +762,11 @@ apiEntries_String_TH' =
     [ ApiGET_TH ''OrganizationPackResponse ]
 
   , ApiEntry_TH "Forum"
-    [ ParBoth_TH [("forum_name", ''String)] ("ByOrganizationName", ''String) ]
+    [ ParBoth_TH [("forum_name", ''String)] ("ByOrganizationId", ''Int64) ]
     [ ApiGET_TH ''ForumResponse ]
 
   , ApiEntry_TH "ForumPack"
-    [ ParBoth_TH [("forum_name", ''String)] ("ByOrganizationName", ''String) ]
+    [ ParBoth_TH [("forum_name", ''String)] ("ByOrganizationId", ''Int64) ]
     [ ApiGET_TH ''ForumPackResponse ]
 
   , ApiEntry_TH "Board"
