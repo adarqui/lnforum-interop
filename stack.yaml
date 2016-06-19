@@ -6,4 +6,4 @@ packages:
 - '../haskell-interop-prime'
 - '../haskell-api-helpers'
 extra-deps: [restyle-0.1.0]
-resolver: lts-5.8
+resolver: lts-6.4
