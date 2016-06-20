@@ -1,13 +1,13 @@
 name:                ln-interop
 version:             0.1.0.0
-synopsis:            Initial project template from stack
+synopsis:            Auto-generates code for ln-ui
 description:         Please see README.md
-homepage:            https://github.com/githubuser/ln-interop#readme
+homepage:            https://github.com/adarqui/ln-interop#readme
 license:             BSD3
 license-file:        LICENSE
 author:              Andrew Darqui
 maintainer:          andrew.darqui@gmail.com
-copyright:           2016 Author name here
+copyright:           2016 Andrew Darqui
 category:            Web
 build-type:          Simple
 -- extra-source-files:
@@ -25,4 +25,4 @@ library
 
 source-repository head
   type:     git
-  location: https://github.com/githubuser/ln-interop
+  location: https://github.com/adarqui/ln-interop

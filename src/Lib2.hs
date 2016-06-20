@@ -16,7 +16,6 @@ module Lib2 (
 
 import           Data.Int
 import           Data.List
--- import           Data.String (String)
 import           Haskell.Interop.Prime
 import           LN.T
 
