@@ -1,6 +1,6 @@
 # ln-interop
 
-**A WORK IN PROGRESS**
+**LN PROJECT: WORK IN PROGRESS**
 
 Using haskell-interop-prime, generate: types, api routines & converters.
 
