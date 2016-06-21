@@ -18,7 +18,9 @@ mkExports
     (MkGHeader "import Purescript.Api.Helpers\n" : (defaultPurescriptMkGs "module LN.T.Internal.Types where"))
     (defaultOptions_Haskell_adarqui "/tmp/LN.hs")
     (MkGHeader "import LN.T.Internal.Types\nimport Data.Int\n" : (defaultHaskellMkGs $ tplTestHeader "LN.T.Internal.JSON")))
-  [ f ''ApiRequest
+  [ f_with_eq ''ACL
+
+  , f ''ApiRequest
   , f ''ApiResponse
   , f ''ApiResponses
 
@@ -122,6 +124,9 @@ mkExports
   , f_without_show ''ParamTag
   , f_without_show ''SortOrderBy
   , f_without_show ''OrderBy
+
+  , f_with_eq ''Permission
+  , f ''Permissions
 
   , f ''PmRequest
   , f ''PmResponse
