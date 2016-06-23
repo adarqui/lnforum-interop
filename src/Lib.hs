@@ -180,6 +180,8 @@ mkExports
   , f ''StarStatResponse
   , f ''StarStatResponses
 
+  , f_with_eq ''SystemTeam
+
   , f ''TeamRequest
   , f ''TeamResponse
   , f ''TeamResponses
