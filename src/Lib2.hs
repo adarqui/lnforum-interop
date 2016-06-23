@@ -80,23 +80,6 @@ apiEntries_TH' :: [ApiEntry_TH]
 apiEntries_TH' =
   [
 
-
-  -- Empty
-    ApiEntry_TH "Emptys"
-    [ ParNone_TH ]
-    [ ApiGET_TH ''EmptyResponses ]
-
-  , ApiEntry_TH "Empty"
-    [ ParNone_TH ]
-    [ ApiPOST_TH ''EmptyRequest ''EmptyResponse ]
-
-  , ApiEntry_TH "Empty"
-    [ Par_TH [("empty_id", ''Int64)] ]
-    [ ApiGET_TH ''EmptyResponse
-    , ApiPUT_TH ''EmptyRequest ''EmptyResponse
-    , ApiDELETE_TH ''()
-    ]
-
   -- Api
   , ApiEntry_TH "Apis"
     [ ParNone_TH ]
