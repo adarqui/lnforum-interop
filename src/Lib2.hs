@@ -81,7 +81,7 @@ apiEntries_TH' =
   [
 
   -- Api
-  , ApiEntry_TH "Apis"
+    ApiEntry_TH "Apis"
     [ ParNone_TH ]
     [ ApiGET_TH ''ApiResponses ]
 
@@ -556,11 +556,13 @@ apiEntries_TH' =
     [ ApiGET_TH ''TeamMemberResponses ]
 
   , ApiEntry_TH "TeamMember"
-    [ ParBy_TH "ByTeamId" ''Int64 ]
+    [ ParBy_TH "ByTeamId" ''Int64
+    , ParBy_TH "ByOrganizationId" ''Int64
+    ]
     [ ApiPOST_TH ''TeamMemberRequest ''TeamMemberResponse ]
 
   , ApiEntry_TH "TeamMember"
-    [ Par_TH [("team_id", ''Int64)] ]
+    [ Par_TH [("team_member_id", ''Int64)] ]
     [ ApiGET_TH ''TeamMemberResponse
     , ApiPUT_TH ''TeamMemberRequest ''TeamMemberResponse
     , ApiDELETE_TH ''()
