@@ -852,6 +852,8 @@ apiEntries_TH' =
     [ ParNone_TH
     , ParBy_TH "ByThreadPostsIds" ''Int64_L
     , ParBy_TH "ByThreadId" ''Int64
+    , ParBy_TH "ByForumId" ''Int64
+    , ParBy_TH "ByBoardId" ''Int64
     ]
     [ ApiGET_TH ''ThreadPostPackResponses ]
 
