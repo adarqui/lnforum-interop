@@ -600,8 +600,6 @@ apiEntries_TH' =
   , ApiEntry_TH "ThreadPosts"
     [ ParNone_TH
     , ParBy_TH "ByThreadId" ''Int64
-    , ParBy_TH "ByForumId" ''Int64
-    , ParBy_TH "ByBoardId" ''Int64
     ]
     [ ApiGET_TH ''ThreadPostResponses ]
 
@@ -838,6 +836,7 @@ apiEntries_TH' =
   , ApiEntry_TH "ThreadPacks"
     [ ParNone_TH
     , ParBy_TH "ByThreadsIds" ''Int64_L
+    , ParBy_TH "ByForumId" ''Int64
     , ParBy_TH "ByBoardId" ''Int64
     ]
     [ ApiGET_TH ''ThreadPackResponses ]
