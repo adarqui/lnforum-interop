@@ -724,6 +724,7 @@ apiEntries_TH' =
   , ApiEntry_TH "TeamMemberPacks"
     [ ParNone_TH
     , ParBy_TH "ByOrganizationId" ''Int64
+    , ParBy_TH "ByTeamId" ''Int64
     ]
     [ ApiGET_TH ''TeamMemberPackResponses ]
 
