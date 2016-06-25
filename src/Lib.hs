@@ -280,6 +280,9 @@ mkExports
 
   , f ''LeuronPackResponse
   , f ''LeuronPackResponses
+
+  , f ''PmInPackResponse
+  , f ''PmOutPackResponse
   ]
 
 

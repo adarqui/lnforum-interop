@@ -467,12 +467,10 @@ apiEntries_TH' =
 
   -- PmIn
   , ApiEntry_TH "PmIns"
-    [ ParNone_TH ]
+    [ ParNone_TH
+    , ParBy_TH "ByUserId" ''Int64
+    ]
     [ ApiGET_TH ''PmInResponses ]
-
-  , ApiEntry_TH "PmIn"
-    [ ParNone_TH ]
-    [ ApiPOST_TH ''PmInRequest ''PmInResponse ]
 
   , ApiEntry_TH "PmIn"
     [ Par_TH [("pm_in_id", ''Int64)] ]
@@ -485,12 +483,10 @@ apiEntries_TH' =
 
   -- PmOut
   , ApiEntry_TH "PmOuts"
-    [ ParNone_TH ]
+    [ ParNone_TH
+    , ParBy_TH "ByUserId" ''Int64
+    ]
     [ ApiGET_TH ''PmOutResponses ]
-
-  , ApiEntry_TH "PmOut"
-    [ ParNone_TH ]
-    [ ApiPOST_TH ''PmOutRequest ''PmOutResponse ]
 
   , ApiEntry_TH "PmOut"
     [ Par_TH [("pm_out_id", ''Int64)] ]
@@ -890,6 +886,25 @@ apiEntries_TH' =
 
 
 
+  -- Packs: PmIn
+  , ApiEntry_TH "PmInPacks"
+    [ ParNone_TH ]
+    [ ApiGET_TH ''LeuronPackResponses ]
+
+  , ApiEntry_TH "PmInPack"
+    [ Par_TH [("pm_in_id", ''Int64)] ]
+    [ ApiGET_TH ''PmInPackResponse ]
+
+
+
+  -- Packs: PmOut
+  , ApiEntry_TH "PmOutPacks"
+    [ ParNone_TH ]
+    [ ApiGET_TH ''LeuronPackResponses ]
+
+  , ApiEntry_TH "PmOutPack"
+    [ Par_TH [("pm_out_id", ''Int64)] ]
+    [ ApiGET_TH ''PmOutPackResponse ]
   ]
 
 
