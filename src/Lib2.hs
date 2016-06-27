@@ -16,6 +16,7 @@ module Lib2 (
 
 import           Data.Int
 import           Data.List
+import           Data.Text             (Text)
 import           Haskell.Interop.Prime
 import           LN.T
 
@@ -72,7 +73,7 @@ apiSpec_TH = Api_TH {
 
 
 type Int64_L = [Int64]
-type String_L = [String]
+type Text_L = [Text]
 
 
 
@@ -217,7 +218,7 @@ apiEntries_TH' =
   -- Forum
   , ApiEntry_TH "Forums"
     [ ParNone_TH
-    , ParBy_TH "ByOrganizationName" ''String
+    , ParBy_TH "ByOrganizationName" ''Text
     , ParBy_TH "ByForumsIds" ''Int64_L
     , ParBy_TH "ByOrganizationId" ''Int64
     ]
@@ -627,7 +628,7 @@ apiEntries_TH' =
   , ApiEntry_TH "Users"
     [ ParNone_TH
     , ParBy_TH "ByUsersIds" ''Int64_L
-    , ParBy_TH "ByUsersNicks" ''String_L
+    , ParBy_TH "ByUsersNicks" ''Text_L
     ]
     [ ApiGET_TH ''UserResponses ]
 
@@ -664,7 +665,7 @@ apiEntries_TH' =
   , ApiEntry_TH "UsersSanitized"
     [ ParNone_TH
     , ParBy_TH "ByUsersIds" ''Int64_L
-    , ParBy_TH "ByUsersNicks" ''String_L
+    , ParBy_TH "ByUsersNicks" ''Text_L
     ]
     [ ApiGET_TH ''UserSanitizedResponses ]
 
@@ -803,7 +804,7 @@ apiEntries_TH' =
     , ParBy_TH "ByForumId" ''Int64
     , ParBy_TH "ByForumsIds" ''Int64_L
     , ParBy_TH "ByOrganizationId" ''Int64
-    , ParBy_TH "ByOrganizationName" ''String
+    , ParBy_TH "ByOrganizationName" ''Text
     ]
     [ ApiGET_TH ''ForumPackResponses ]
 
@@ -927,63 +928,63 @@ apiEntries_String_TH' =
 
   -- Packs: UserSanitized
     ApiEntry_TH "UserSanitizedPack"
-    [ Par_TH [("user_nick", ''String)] ]
+    [ Par_TH [("user_nick", ''Text)] ]
     [ ApiGET_TH ''UserSanitizedPackResponse ]
 
   , ApiEntry_TH "Organization"
-    [ Par_TH [("organization_name", ''String)] ]
+    [ Par_TH [("organization_name", ''Text)] ]
     [ ApiGET_TH ''OrganizationResponse ]
 
   , ApiEntry_TH "OrganizationPack"
-    [ Par_TH [("organization_name", ''String)] ]
+    [ Par_TH [("organization_name", ''Text)] ]
     [ ApiGET_TH ''OrganizationPackResponse ]
 
   , ApiEntry_TH "Team"
-    [ ParBoth_TH [("team_name", ''String)] ("ByOrganizationId", ''Int64) ]
+    [ ParBoth_TH [("team_name", ''Text)] ("ByOrganizationId", ''Int64) ]
     [ ApiGET_TH ''TeamResponse ]
 
   , ApiEntry_TH "TeamPack"
-    [ ParBoth_TH [("team_name", ''String)] ("ByOrganizationId", ''Int64) ]
+    [ ParBoth_TH [("team_name", ''Text)] ("ByOrganizationId", ''Int64) ]
     [ ApiGET_TH ''TeamPackResponse ]
 
   , ApiEntry_TH "GlobalGroup"
-    [ ParBoth_TH [("global_group_name", ''String)] ("ByOrganizationId", ''Int64) ]
+    [ ParBoth_TH [("global_group_name", ''Text)] ("ByOrganizationId", ''Int64) ]
     [ ApiGET_TH ''GlobalGroupResponse ]
 
   , ApiEntry_TH "GlobalGroupPack"
-    [ ParBoth_TH [("global_group_name", ''String)] ("ByOrganizationId", ''Int64) ]
+    [ ParBoth_TH [("global_group_name", ''Text)] ("ByOrganizationId", ''Int64) ]
     [ ApiGET_TH ''GlobalGroupPackResponse ]
 
   , ApiEntry_TH "Group"
-    [ ParBoth_TH [("group_name", ''String)] ("ByOrganizationId", ''Int64) ]
+    [ ParBoth_TH [("group_name", ''Text)] ("ByOrganizationId", ''Int64) ]
     [ ApiGET_TH ''GroupResponse ]
 
   , ApiEntry_TH "GroupPack"
-    [ ParBoth_TH [("group_name", ''String)] ("ByOrganizationId", ''Int64) ]
+    [ ParBoth_TH [("group_name", ''Text)] ("ByOrganizationId", ''Int64) ]
     [ ApiGET_TH ''GroupPackResponse ]
 
   , ApiEntry_TH "Forum"
-    [ ParBoth_TH [("forum_name", ''String)] ("ByOrganizationId", ''Int64) ]
+    [ ParBoth_TH [("forum_name", ''Text)] ("ByOrganizationId", ''Int64) ]
     [ ApiGET_TH ''ForumResponse ]
 
   , ApiEntry_TH "ForumPack"
-    [ ParBoth_TH [("forum_name", ''String)] ("ByOrganizationId", ''Int64) ]
+    [ ParBoth_TH [("forum_name", ''Text)] ("ByOrganizationId", ''Int64) ]
     [ ApiGET_TH ''ForumPackResponse ]
 
   , ApiEntry_TH "Board"
-    [ ParBoth_TH [("board_name", ''String)] ("ByForumId", ''Int64) ]
+    [ ParBoth_TH [("board_name", ''Text)] ("ByForumId", ''Int64) ]
     [ ApiGET_TH ''BoardResponse ]
 
   , ApiEntry_TH "BoardPack"
-    [ ParBoth_TH [("board_name", ''String)] ("ByForumId", ''Int64) ]
+    [ ParBoth_TH [("board_name", ''Text)] ("ByForumId", ''Int64) ]
     [ ApiGET_TH ''BoardPackResponse ]
 
   , ApiEntry_TH "Thread"
-    [ ParBoth_TH [("thread_name", ''String)] ("ByBoardId", ''Int64) ]
+    [ ParBoth_TH [("thread_name", ''Text)] ("ByBoardId", ''Int64) ]
     [ ApiGET_TH ''ThreadResponse ]
 
   , ApiEntry_TH "ThreadPack"
-    [ ParBoth_TH [("thread_name", ''String)] ("ByBoardId", ''Int64) ]
+    [ ParBoth_TH [("thread_name", ''Text)] ("ByBoardId", ''Int64) ]
     [ ApiGET_TH ''ThreadPackResponse ]
 
   ]
@@ -994,9 +995,7 @@ apiEntries_String_TH' =
 haskellApiImports :: String
 haskellApiImports =
   intercalate "\n" $
-  ["import Data.Int"
-  , "import LN.T hiding (Param(..), QueryParam, SortOrderBy(..), OrderBy(..), ParamTag(..))"
-  , "import LN.T.Param.String"
-  , ""
+  [ ""
+  , "import LN.T"
   , ""
   ]
