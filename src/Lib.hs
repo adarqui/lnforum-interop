@@ -17,7 +17,7 @@ mkExports
     (defaultOptionsCleanPurescript "/tmp/LN.purs")
     (MkGHeader "import Purescript.Api.Helpers\n" : (defaultPurescriptMkGs "module LN.T.Internal.Types where"))
     (defaultOptions_Haskell_adarqui "/tmp/LN.hs")
-    (MkGHeader "import LN.T.Internal.Types\nimport Data.Int\n" : (defaultHaskellMkGs $ tplTestHeader "LN.T.Internal.JSON")))
+    (MkGHeader "import LN.T.Internal.Types\n" : (defaultHaskellMkGs $ tplTestHeader "LN.T.Internal.JSON")))
   [ f_with_eq ''ACL
 
   , f ''ApiRequest
@@ -295,9 +295,9 @@ mkExports
 mkConvert
   (Options
     (defaultOptionsCleanPurescript "/tmp/LN.Convert.purs")
-    (MkGHeader "import LN.T.Internal.Types\n" : (defaultPurescriptMkGs "module LN.T.Internal.Convert where"))
+    (MkGHeader "import LN.T.Internal.Types\n" : (defaultPurescriptConvertMkGs "module LN.T.Internal.Convert where"))
     (defaultOptions_Haskell_adarqui "/tmp/LN.Convert.hs")
-    (MkGHeader "import LN.T.Internal.Types\nimport Data.Int\n" : (defaultHaskellMkGs $ tplTestHeader "LN.T.Internal.Convert")))
+    (MkGHeader "import LN.T.Internal.Types\n" : (defaultHaskellConvertMkGs $ tplTestHeader "LN.T.Internal.Convert")))
   [ (''ApiRequest, ''ApiResponse)
   , (''ApiResponse, ''ApiRequest)
 
@@ -370,7 +370,7 @@ mkConvert
 mkApi
   (Options
     ((defaultOptionsCleanPurescript "/tmp/LN.Api.purs") { debug = True })
-    (MkGHeader "import Prelude\nimport Data.Either\nimport LN.T.Internal.Types\n" : (defaultPurescriptApiMkGs "module LN.Api.Internal where"))
+    (MkGHeader "import LN.T.Internal.Types\n" : (defaultPurescriptApiMkGs "module LN.Api.Internal where"))
     ((defaultOptionsCleanHaskell "/tmp/LN.Api.hs" ) { debug = True })
     (MkGHeader haskellApiImports : (defaultHaskellApiMkGs $ tplTestHeader "LN.Api.Internal")))
   apiSpec_TH
@@ -380,7 +380,7 @@ mkApi
 mkApi
   (Options
     ((defaultOptionsCleanPurescript "/tmp/LN.Api.String.purs") { debug = True })
-    (MkGHeader "import Prelude\nimport Data.Either\nimport LN.T.Internal.Types\n" : (defaultPurescriptApiMkGs "module LN.Api.Internal.String where"))
+    (MkGHeader "import LN.T.Internal.Types\n" : (defaultPurescriptApiStringMkGs "module LN.Api.Internal.String where"))
     ((defaultOptionsCleanHaskell "/tmp/LN.Api.String.hs" ) { debug = True })
-    (MkGHeader haskellApiImports : (defaultHaskellApiMkGs $ tplTestHeader "LN.Api.Internal.String")))
+    (MkGHeader haskellApiImports : (defaultHaskellApiStringMkGs $ tplTestHeader "LN.Api.Internal.String")))
   apiSpec_String_TH
