@@ -14,8 +14,9 @@ module Lib2 (
 
 
 
-import           Data.Int
-import           Data.List
+import           Data.Int              (Int64)
+import           Data.List             (intercalate)
+import           Data.Monoid           ((<>))
 import           Data.Text             (Text)
 import           Haskell.Interop.Prime
 import           LN.T
@@ -60,7 +61,7 @@ f_without_show t = (t, filter (/= MkShow) myPs, hs)
 
 
 f_with_eq :: forall t. t -> (t, [Mk], [Mk])
-f_with_eq t = (t, myPs ++ [MkEq], hs)
+f_with_eq t = (t, myPs <> [MkEq], hs)
 
 
 
