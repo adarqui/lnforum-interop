@@ -373,6 +373,7 @@ mkApi
     (MkGHeader "import LN.T.Internal.Types\n" : (defaultPurescriptApiMkGs "module LN.Api.Internal where"))
     ((defaultOptionsCleanHaskell "/tmp/LN.Api.hs" ) { debug = True })
     (MkGHeader haskellApiImports : (defaultHaskellApiMkGs $ tplTestHeader "LN.Api.Internal")))
+  ''ApplicationError
   apiSpec_TH
 
 
@@ -383,4 +384,5 @@ mkApi
     (MkGHeader "import LN.T.Internal.Types\n" : (defaultPurescriptApiStringMkGs "module LN.Api.Internal.String where"))
     ((defaultOptionsCleanHaskell "/tmp/LN.Api.String.hs" ) { debug = True })
     (MkGHeader haskellApiImports : (defaultHaskellApiStringMkGs $ tplTestHeader "LN.Api.Internal.String")))
+  ''ApplicationError
   apiSpec_String_TH
