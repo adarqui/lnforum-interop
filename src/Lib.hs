@@ -46,6 +46,7 @@ mkExports
   , f ''Ent
 
   , f_with_eq ''ApplicationError
+  , f_with_eq ''ValidationError
 
   , f ''ForumRequest
   , f ''ForumResponse
