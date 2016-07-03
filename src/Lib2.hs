@@ -3,10 +3,11 @@
 
 module Lib2 (
   f,
-  f_without_show,
-  f_with_eq,
-  hs,
-  ps,
+  f_withPs,
+  f_withHs,
+  f_withBoth,
+  myPs,
+  myHs,
   apiSpec_TH,
   apiSpec_String_TH,
   haskellApiImports
@@ -23,16 +24,6 @@ import           LN.T
 
 
 
-ps :: [Mk]
-ps = defaultPurescriptMks
-
-
-
-hs :: [Mk]
-hs = defaultHaskellMks
-
-
-
 myPs :: [Mk]
 myPs =
   [ MkType
@@ -45,23 +36,36 @@ myPs =
   , MkRequestable
   , MkRespondable
   , MkIsForeign
-  , MkShow
+  ]
+
+
+
+myHs :: [Mk]
+myHs =
+  [ MkFromJSON
+  , MkToJSON
+  , MkEq
   ]
 
 
 
 f :: forall t. t -> (t, [Mk], [Mk])
-f t = (t, myPs, hs)
+f t = (t, myPs, myHs)
 
 
 
-f_without_show :: forall t. t -> (t, [Mk], [Mk])
-f_without_show t = (t, filter (/= MkShow) myPs, hs)
+f_withPs :: forall t. t -> [Mk] -> (t, [Mk], [Mk])
+f_withPs t with = (t, myPs <> with, myHs)
 
 
 
-f_with_eq :: forall t. t -> (t, [Mk], [Mk])
-f_with_eq t = (t, myPs <> [MkEq], hs)
+f_withHs :: forall t. t -> [Mk] -> (t, [Mk], [Mk])
+f_withHs t with = (t, myPs, myHs <> with)
+
+
+
+f_withBoth :: forall t. t -> [Mk] -> (t, [Mk], [Mk])
+f_withBoth t with = (t, myPs <> with, myHs <> with)
 
 
 

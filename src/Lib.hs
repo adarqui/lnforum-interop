@@ -18,7 +18,7 @@ mkExports
     (MkGHeader "import Purescript.Api.Helpers\n" : (defaultPurescriptMkGs "module LN.T.Internal.Types where"))
     (defaultOptions_Haskell_adarqui "/tmp/LN.hs")
     (MkGHeader "import LN.T.Internal.Types\n" : (defaultHaskellMkGs $ tplTestHeader "LN.T.Internal.JSON")))
-  [ f_with_eq ''ACL
+  [ f_withBoth ''ACL [MkEq]
 
   , f ''ApiRequest
   , f ''ApiResponse
@@ -43,10 +43,11 @@ mkExports
   , f ''EmptyResponse
   , f ''EmptyResponses
 
-  , f ''Ent
+  , f_withBoth ''Ent [MkEq]
 
-  , f_with_eq ''ApplicationError
-  , f_with_eq ''ValidationError
+  , f_withBoth ''ApplicationError [MkEq]
+  , f_withBoth ''ValidationError [MkEq]
+  , f_withBoth ''ValidationErrorCode [MkEq]
 
   , f ''ForumRequest
   , f ''ForumResponse
@@ -87,7 +88,7 @@ mkExports
   , f ''LeuronTrainingStatResponse
   , f ''LeuronTrainingStatResponses
 
-  , f ''LikeOpt
+  , f_withBoth ''LikeOpt [MkEq]
   , f ''LikeRequest
   , f ''LikeResponse
   , f ''LikeResponses
@@ -95,7 +96,7 @@ mkExports
   , f ''LikeStatResponses
 
   , f ''LeuronData
-  , f_with_eq ''TyLeuron
+  , f_withBoth ''TyLeuron [MkEq]
   , f ''Fact
   , f ''FactList
   , f ''Card
@@ -115,7 +116,7 @@ mkExports
   , f ''QA
   , f ''Table
 
-  , f_with_eq ''Membership
+  , f_withBoth ''Membership [MkEq]
 
   , f ''OrganizationRequest
   , f ''OrganizationResponse
@@ -123,12 +124,12 @@ mkExports
   , f ''OrganizationStatResponse
   , f ''OrganizationStatResponses
 
-  , f_without_show ''Param
-  , f_without_show ''ParamTag
-  , f_without_show ''SortOrderBy
-  , f_without_show ''OrderBy
+  , f_withBoth ''Param [MkEq, MkShow, MkQueryParam]
+  , f_withBoth ''ParamTag [MkEq, MkShow, MkRead]
+  , f_withBoth ''SortOrderBy [MkEq, MkShow, MkRead]
+  , f_withBoth ''OrderBy [MkEq, MkShow, MkRead]
 
-  , f_with_eq ''Permission
+  , f_withBoth ''Permission [MkEq]
   , f ''Permissions
 
   , f ''PmRequest
@@ -144,7 +145,7 @@ mkExports
   , f ''PmOutResponses
 
   , f ''ProfileX
-  , f_with_eq ''ProfileGender
+  , f_withBoth ''ProfileGender [MkEq]
   , f ''ProfileRequest
   , f ''ProfileResponse
   , f ''ProfileResponses
@@ -158,7 +159,7 @@ mkExports
   , f ''ReminderFolderResponses
 
   , f ''ResourceType
-  , f_with_eq ''TyResourceType
+  , f_withBoth ''TyResourceType [MkEq]
   , f ''ResourceRequest
   , f ''ResourceResponse
   , f ''ResourceResponses
@@ -166,13 +167,13 @@ mkExports
   , f ''ResourceStatResponse
   , f ''ResourceStatResponses
 
-  , f_with_eq ''Size
+  , f_withBoth ''Size [MkEq]
 
   , f ''Splits
-  , f_with_eq ''TySplits
+  , f_withBoth ''TySplits [MkEq]
 
   , f ''Substitutions
-  , f_with_eq ''TySubstitutions
+  , f_withBoth ''TySubstitutions [MkEq]
 
 --  , f ''StyleResponse
 --  , f ''StyleResponses
@@ -183,7 +184,7 @@ mkExports
   , f ''StarStatResponse
   , f ''StarStatResponses
 
-  , f_with_eq ''SystemTeam
+  , f_withBoth ''SystemTeam [MkEq]
 
   , f ''TeamRequest
   , f ''TeamResponse
@@ -208,7 +209,7 @@ mkExports
   , f ''ThreadStatResponse
   , f ''ThreadStatResponses
 
-  , f ''PostData
+  , f_withBoth ''PostData [MkEq]
 
   , f ''ThreadPostRequest
   , f ''ThreadPostResponse
@@ -225,7 +226,7 @@ mkExports
   , f ''UserSanitizedStatResponse
   , f ''UserSanitizedStatResponses
 
-  , f_with_eq ''Visibility
+  , f_withBoth ''Visibility [MkEq]
 
 {-
   , f ''WorkoutRequest
