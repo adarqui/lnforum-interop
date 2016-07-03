@@ -43,7 +43,7 @@ mkExports
   , f ''EmptyResponse
   , f ''EmptyResponses
 
-  , f_withBoth ''Ent [MkEq]
+  , f_withBoth ''Ent [MkEq, MkRead]
 
   , f_withBoth ''ApplicationError [MkEq]
   , f_withBoth ''ValidationError [MkEq]
@@ -80,7 +80,7 @@ mkExports
   , f ''LeuronStatResponse
   , f ''LeuronStatResponses
 
-  , f ''LeuronTrainingSummary
+  , f_withBoth ''LeuronTrainingSummary [MkEq, MkRead]
   , f ''LeuronTrainingRequest
   , f ''LeuronTrainingResponse
   , f ''LeuronTrainingResponses
@@ -88,7 +88,7 @@ mkExports
   , f ''LeuronTrainingStatResponse
   , f ''LeuronTrainingStatResponses
 
-  , f_withBoth ''LikeOpt [MkEq]
+  , f_withBoth ''LikeOpt [MkEq, MkRead]
   , f ''LikeRequest
   , f ''LikeResponse
   , f ''LikeResponses
@@ -116,7 +116,7 @@ mkExports
   , f ''QA
   , f ''Table
 
-  , f_withBoth ''Membership [MkEq]
+  , f_withBoth ''Membership [MkEq, MkRead]
 
   , f ''OrganizationRequest
   , f ''OrganizationResponse
@@ -145,7 +145,7 @@ mkExports
   , f ''PmOutResponses
 
   , f ''ProfileX
-  , f_withBoth ''ProfileGender [MkEq]
+  , f_withBoth ''ProfileGender [MkEq, MkRead]
   , f ''ProfileRequest
   , f ''ProfileResponse
   , f ''ProfileResponses
@@ -184,7 +184,7 @@ mkExports
   , f ''StarStatResponse
   , f ''StarStatResponses
 
-  , f_withBoth ''SystemTeam [MkEq]
+  , f_withBoth ''SystemTeam [MkEq, MkRead]
 
   , f ''TeamRequest
   , f ''TeamResponse
@@ -226,7 +226,7 @@ mkExports
   , f ''UserSanitizedStatResponse
   , f ''UserSanitizedStatResponses
 
-  , f_withBoth ''Visibility [MkEq]
+  , f_withBoth ''Visibility [MkEq, MkRead]
 
 {-
   , f ''WorkoutRequest
