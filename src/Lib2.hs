@@ -45,6 +45,7 @@ myHs =
   [ MkFromJSON
   , MkToJSON
   , MkEq
+  , MkShow
   ]
 
 
