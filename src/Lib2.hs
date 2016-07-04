@@ -634,7 +634,7 @@ apiEntries_TH' =
   , ApiEntry_TH "Users"
     [ ParNone_TH
     , ParBy_TH "ByUsersIds" ''Int64_L
-    , ParBy_TH "ByUsersNicks" ''Text_L
+    , ParBy_TH "ByUsersNames" ''Text_L
     ]
     [ ApiGET_TH ''UserResponses ]
 
@@ -671,7 +671,7 @@ apiEntries_TH' =
   , ApiEntry_TH "UsersSanitized"
     [ ParNone_TH
     , ParBy_TH "ByUsersIds" ''Int64_L
-    , ParBy_TH "ByUsersNicks" ''Text_L
+    , ParBy_TH "ByUsersNames" ''Text_L
     ]
     [ ApiGET_TH ''UserSanitizedResponses ]
 
@@ -934,7 +934,7 @@ apiEntries_String_TH' =
 
   -- Packs: UserSanitized
     ApiEntry_TH "UserSanitizedPack"
-    [ Par_TH [("user_nick", ''Text)] ]
+    [ Par_TH [("user_name", ''Text)] ]
     [ ApiGET_TH ''UserSanitizedPackResponse ]
 
   , ApiEntry_TH "Organization"
