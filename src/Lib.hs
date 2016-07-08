@@ -12,7 +12,9 @@ import           Haskell.Interop.Prime
 
 
 
-f_mkType "LN.T.ACL" "LN/T/ACL" $
+f_mkType'
+  ["LN.T.Permission"]
+  "LN.T.ACL" "LN/T/ACL" $
   [ f_withBoth ''ACL [MkEq] ]
 
 
@@ -68,7 +70,9 @@ f_mkType "LN.T.Error" "LN/T/Error" $
 
 
 
-f_mkType "LN.T.Forum" "LN/T/Forum" $
+f_mkType'
+  ["LN.T.Visibility"]
+  "LN.T.Forum" "LN/T/Forum" $
   [ f ''ForumRequest
   , f ''ForumResponse
   , f ''ForumResponses
@@ -79,7 +83,9 @@ f_mkType "LN.T.Forum" "LN/T/Forum" $
 
 
 
-f_mkType "LN.T.GlobalGroup" "LN/T/GlobalGroup" $
+f_mkType'
+  ["LN.T.Membership", "LN.T.Visibility"]
+  "LN.T.GlobalGroup" "LN/T/GlobalGroup" $
   [ f ''GlobalGroupRequest
   , f ''GlobalGroupResponse
   , f ''GlobalGroupResponses
@@ -89,7 +95,8 @@ f_mkType "LN.T.GlobalGroup" "LN/T/GlobalGroup" $
 
 
 
-f_mkType "LN.T.Group" "LN/T/Group" $
+f_mkType
+  "LN.T.Group" "LN/T/Group" $
   [ f ''GroupRequest
   , f ''GroupResponse
   , f ''GroupResponses
@@ -109,7 +116,9 @@ f_mkType "LN.T.GroupMember" "LN/T/GroupMember" $
 
 
 
-f_mkType "LN.T.Leuron" "LN/T/Leuron" $
+f_mkType'
+  ["LN.T.DepList", "LN.T.Splits", "LN.T.Substitutions"]
+  "LN.T.Leuron" "LN/T/Leuron" $
   [ f ''LeuronRequest
   , f ''LeuronResponse
   , f ''LeuronResponses
@@ -150,7 +159,9 @@ f_mkType "LN.T.LeuronTraining" "LN/T/LeuronTraining" $
 
 
 
-f_mkType "LN.T.Like" "LN/T/Like" $
+f_mkType'
+  ["LN.T.Ent"]
+  "LN.T.Like" "LN/T/Like" $
   [ f_withBoth ''LikeOpt [MkEq, MkRead]
   , f ''LikeRequest
   , f ''LikeResponse
@@ -167,7 +178,9 @@ f_mkType "LN.T.Membership" "LN/T/Membership" $
 
 
 
-f_mkType "LN.T.Organization" "LN/T/Organization" $
+f_mkType'
+  ["LN.T.Membership", "LN.T.Visibility"]
+  "LN.T.Organization" "LN/T/Organization" $
   [ f ''OrganizationRequest
   , f ''OrganizationResponse
   , f ''OrganizationResponses
@@ -217,7 +230,7 @@ f_mkType "LN.T.PmOut" "LN/T/PmOut" $
 
 
 
-f_mkType "LN.T.Profile" "LN/T/Profile" $
+f_mkType' ["LN.T.Ent"] "LN.T.Profile" "LN/T/Profile" $
   [ f ''ProfileX
   , f_withBoth ''ProfileGender [MkEq, MkRead]
   , f ''ProfileRequest
@@ -227,7 +240,7 @@ f_mkType "LN.T.Profile" "LN/T/Profile" $
 
 
 
-f_mkType "LN.T.Reminder" "LN/T/Reminder" $
+f_mkType' ["LN.T.Visibility"] "LN.T.Reminder" "LN/T/Reminder" $
   [ f ''ReminderRequest
   , f ''ReminderResponse
   , f ''ReminderResponses
@@ -238,7 +251,7 @@ f_mkType "LN.T.Reminder" "LN/T/Reminder" $
 
 
 
-f_mkType "LN.T.Resource" "LN/T/Resource" $
+f_mkType' ["LN.T.DepList", "LN.T.Visibility"] "LN.T.Resource" "LN/T/Resource" $
   [ f ''ResourceType
   , f_withBoth ''TyResourceType [MkEq]
   , f ''ResourceRequest
@@ -262,7 +275,7 @@ f_mkType "LN.T.Splits" "LN/T/Splits" $
 
 
 
-f_mkType "LN.T.Substitution" "LN/T/Substitutions" $
+f_mkType "LN.T.Substitutions" "LN/T/Substitutions" $
   [ f ''Substitutions
   , f_withBoth ''TySubstitutions [MkEq]
   ]
@@ -274,7 +287,7 @@ f_mkType "LN.T.Substitution" "LN/T/Substitutions" $
 
 
 
-f_mkType "LN.T.Star" "LN/T/Star" $
+f_mkType' ["LN.T.Ent"] "LN.T.Star" "LN/T/Star" $
   [ f ''StarRequest
   , f ''StarResponse
   , f ''StarResponses
@@ -284,7 +297,7 @@ f_mkType "LN.T.Star" "LN/T/Star" $
 
 
 
-f_mkType "LN.T.Team" "LN/T/Team" $
+f_mkType' ["LN.T.Visibility", "LN.T.Membership"] "LN.T.Team" "LN/T/Team" $
   [ f_withBoth ''SystemTeam [MkEq, MkRead]
   , f ''TeamRequest
   , f ''TeamResponse
@@ -364,112 +377,144 @@ f_mkType "LN.T.Visibility" "LN/T/Visibility" $
 
 
 
-f_mkType "LN.T.Pack.Organization" "LN/T/Pack/Organization" $
+f_mkType'
+  ["LN.T.Organization", "LN.T.User", "LN.T.Team", "LN.T.Like", "LN.T.Star", "LN.T.Permission"]
+  "LN.T.Pack.Organization" "LN/T/Pack/Organization" $
   [ f ''OrganizationPackResponse
   , f ''OrganizationPackResponses
   ]
 
 
 
-f_mkType "LN.T.Pack.Team" "LN/T/Pack/Team" $
+f_mkType'
+  ["LN.T.Team", "LN.T.User", "LN.T.Permission"]
+  "LN.T.Pack.Team" "LN/T/Pack/Team" $
   [ f ''TeamPackResponse
   , f ''TeamPackResponses
   ]
 
 
 
-f_mkType "LN.T.Pack.TeamMember" "LN/T/Pack/TeamMember" $
+f_mkType'
+  ["LN.T.TeamMember", "LN.T.User", "LN.T.Permission"]
+  "LN.T.Pack.TeamMember" "LN/T/Pack/TeamMember" $
   [ f ''TeamMemberPackResponse
   , f ''TeamMemberPackResponses
   ]
 
 
 
-f_mkType "LN.T.Pack.User" "LN/T/Pack/User" $
+f_mkType'
+  ["LN.T.Profile", "LN.T.User"]
+  "LN.T.Pack.User" "LN/T/Pack/User" $
   [ f ''UserPackResponse
   , f ''UserPackResponses
   ]
 
 
 
-f_mkType "LN.T.Pack.Sanitized.User" "LN/T/Pack/Sanitized/User" $
+f_mkType'
+  ["LN.T.User", "LN.T.Like", "LN.T.Star", "LN.T.Profile"]
+  "LN.T.Pack.Sanitized.User" "LN/T/Pack/Sanitized/User" $
   [ f ''UserSanitizedPackResponse
   , f ''UserSanitizedPackResponses
   ]
 
 
 
-f_mkType "LN.T.Pack.GlobalGroup" "LN/T/Pack/GlobalGroup" $
+f_mkType'
+  ["LN.T.GlobalGroup", "LN.T.User", "LN.T.Permission"]
+  "LN.T.Pack.GlobalGroup" "LN/T/Pack/GlobalGroup" $
   [ f ''GlobalGroupPackResponse
   , f ''GlobalGroupPackResponses
   ]
 
 
 
-f_mkType "LN.T.Pack.Group" "LN/T/Pack/Group" $
+f_mkType'
+  ["LN.T.Group", "LN.T.User", "LN.T.Permission", "LN.T.Organization"]
+  "LN.T.Pack.Group" "LN/T/Pack/Group" $
   [ f ''GroupPackResponse
   , f ''GroupPackResponses
   ]
 
 
 
-f_mkType "LN.T.Pack.GroupMember" "LN/T/Pack/GroupMember" $
+f_mkType'
+  ["LN.T.GroupMember", "LN.T.User"]
+  "LN.T.Pack.GroupMember" "LN/T/Pack/GroupMember" $
   [ f ''GroupMemberPackResponse
   , f ''GroupMemberPackResponses
   ]
 
 
 
-f_mkType "LN.T.Pack.Forum" "LN/T/Pack/Forum" $
+f_mkType'
+  ["LN.T.Forum", "LN.T.User", "LN.T.Permission", "LN.T.Organization", "LN.T.Star", "LN.T.Like"]
+  "LN.T.Pack.Forum" "LN/T/Pack/Forum" $
   [ f ''ForumPackResponse
   , f ''ForumPackResponses
   ]
 
 
 
-f_mkType "LN.T.Pack.Board" "LN/T/Pack/Board" $
+f_mkType'
+  ["LN.T.Permission", "LN.T.Organization", "LN.T.User", "LN.T.Forum", "LN.T.Board", "LN.T.Thread", "LN.T.ThreadPost", "LN.T.Like", "LN.T.Star"]
+  "LN.T.Pack.Board" "LN/T/Pack/Board" $
   [ f ''BoardPackResponse
   , f ''BoardPackResponses
   ]
 
 
 
-f_mkType "LN.T.Pack.Thread" "LN/T/Pack/Thread" $
+f_mkType'
+  ["LN.T.Permission", "LN.T.Organization", "LN.T.User", "LN.T.Forum", "LN.T.Board", "LN.T.Thread", "LN.T.ThreadPost", "LN.T.Like", "LN.T.Star"]
+  "LN.T.Pack.Thread" "LN/T/Pack/Thread" $
   [ f ''ThreadPackResponse
   , f ''ThreadPackResponses
   ]
 
 
 
-f_mkType "LN.T.Pack.ThreadPost" "LN/T/Pack/ThreadPost" $
+f_mkType'
+  ["LN.T.Permission", "LN.T.Organization", "LN.T.User", "LN.T.Forum", "LN.T.Board", "LN.T.Thread", "LN.T.ThreadPost", "LN.T.Like", "LN.T.Star"]
+  "LN.T.Pack.ThreadPost" "LN/T/Pack/ThreadPost" $
   [ f ''ThreadPostPackResponse
   , f ''ThreadPostPackResponses
   ]
 
 
 
-f_mkType "LN.T.Pack.Resource" "LN/T/Pack/Resource" $
+f_mkType'
+  ["LN.T.Resource", "LN.T.User", "LN.T.Permission", "LN.T.Like", "LN.T.Star"]
+  "LN.T.Pack.Resource" "LN/T/Pack/Resource" $
   [ f ''ResourcePackResponse
   , f ''ResourcePackResponses
   ]
 
 
 
-f_mkType "LN.T.Pack.Leuron" "LN/T/Pack/Leuron" $
+f_mkType'
+  ["LN.T.Leuron", "LN.T.LeuronTraining", "LN.T.User", "LN.T.Permission", "LN.T.Star", "LN.T.Like"]
+  "LN.T.Pack.Leuron" "LN/T/Pack/Leuron" $
   [ f ''LeuronPackResponse
   , f ''LeuronPackResponses
   ]
 
 
 
-f_mkType "LN.T.Pack.PmIn" "LN/T/Pack/PmIn" $
+f_mkType'
+  ["LN.T.PmIn", "LN.T.User"]
+  "LN.T.Pack.PmIn" "LN/T/Pack/PmIn" $
   [ f ''PmInPackResponse
   , f ''PmInPackResponses
   ]
 
 
 
-f_mkType "LN.T.Pack.PmOut" "LN/T/Pack/PmOut" $
+f_mkType'
+  ["LN.T.PmOut", "LN.T.User"]
+  "LN.T.Pack.PmOut" "LN/T/Pack/PmOut" $
   [ f ''PmOutPackResponse
   , f ''PmOutPackResponses
   ]

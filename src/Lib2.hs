@@ -7,6 +7,7 @@ module Lib2 (
   f_withHs,
   f_withBoth,
   f_mkType,
+  f_mkType',
   myPs_MkGs,
   myHs_MkGs,
   myPs_Mks,
@@ -27,18 +28,20 @@ import           LN.T
 
 
 
-myPs_MkGs :: String -> [MkG]
-myPs_MkGs header =
+myPs_MkGs :: [String] -> String -> [MkG]
+myPs_MkGs imports header =
   [ MkGPurescriptImports
+  , MkGHeader $ intercalate "\n" $ map ((<>) "import ") imports
   , MkGHeader header
   , MkGFooter "-- footer"
   ]
 
 
 
-myHs_MkGs :: String -> [MkG]
-myHs_MkGs header =
+myHs_MkGs :: [String] -> String -> [MkG]
+myHs_MkGs imports header =
   [ MkGHaskellImports
+  , MkGHeader $ intercalate "\n" $ map ((<>) "import ") imports
   , MkGHeader header
   , MkGFooter "-- footer"
   ]
@@ -63,7 +66,8 @@ myPs_Mks =
 
 myHs_Mks :: [Mk]
 myHs_Mks =
-  [ MkFromJSON
+  [ MkType
+  , MkFromJSON
   , MkToJSON
   , MkEq
   , MkShow
@@ -91,13 +95,15 @@ f_withBoth t with = (t, myPs_Mks <> with, myHs_Mks <> with)
 
 
 
-f_mkType module_name module_path types =
+f_mkType = f_mkType' []
+
+f_mkType' imports module_name module_path types =
   mkExports
     (Options
       (defaultOptionsCleanPurescript $ "../purescript-ln-types/src/" <> module_path <> ".purs")
-      (MkGHeader "import Purescript.Api.Helpers\n" : (myPs_MkGs $ "module " <> module_name <> " where"))
+      (MkGHeader "import Purescript.Api.Helpers\n" : (myPs_MkGs imports $ "module " <> module_name <> " where"))
       (defaultOptions_Haskell_adarqui $ "../haskell-ln-types/src/" <> module_path <> ".hs")
-      (myHs_MkGs $ tplTestHeader module_name))
+      (myHs_MkGs imports $ tplTestHeader module_name))
     types
 
 
