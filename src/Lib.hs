@@ -63,9 +63,9 @@ f_mkType "LN.T.Ent" "LN/T/Ent" $
 
 
 f_mkType "LN.T.Error" "LN/T/Error" $
-  [ f_withBoth ''ApplicationError [MkEq]
-  , f_withBoth ''ValidationError [MkEq]
-  , f_withBoth ''ValidationErrorCode [MkEq]
+  [ f_withBoth ''ApplicationError [MkEq, MkDefault "Error_Unknown"]
+  , f_withBoth ''ValidationError [MkEq, MkDefault "Validate Validate_Unknown Nothing"]
+  , f_withBoth ''ValidationErrorCode [MkEq, MkDefault "Validate_Unknown"]
   ]
 
 
@@ -79,7 +79,6 @@ f_mkType'
   , f ''ForumStatResponse
   , f ''ForumStatResponses
   ]
-
 
 
 
@@ -524,9 +523,9 @@ f_mkType'
 mkConvert
   (Options
     (defaultOptionsCleanPurescript "../purescript-ln-types/src/LN/T/Convert.purs")
-    (MkGHeader "import LN.T.Internal.Types\n" : (defaultPurescriptConvertMkGs "module LN.T.Convert where"))
+    (MkGHeader "import LN.T\n" : (defaultPurescriptConvertMkGs "module LN.T.Convert where"))
     (defaultOptions_Haskell_adarqui "../haskell-ln-types/src/LN/T/Convert.hs")
-    (MkGHeader "import LN.T.Internal.Types\n" : (defaultHaskellConvertMkGs $ tplTestHeader "LN.T.Convert")))
+    (MkGHeader "import LN.T\n" : (defaultHaskellConvertMkGs $ tplTestHeader "LN.T.Convert")))
   [ (''ApiRequest, ''ApiResponse)
   , (''ApiResponse, ''ApiRequest)
 
@@ -535,9 +534,6 @@ mkConvert
 
   , (''BucketRequest, ''BucketResponse)
   , (''BucketResponse, ''BucketRequest)
-
-  , (''EmptyRequest, ''EmptyResponse)
-  , (''EmptyResponse, ''EmptyRequest)
 
   , (''ForumRequest, ''ForumResponse)
   , (''ForumResponse, ''ForumRequest)
@@ -599,7 +595,7 @@ mkConvert
 mkApi
   (Options
     ((defaultOptionsCleanPurescript "../purescript-ln-api/src/LN/Api.purs") { debug = True })
-    (MkGHeader "import LN.T.Internal.Types\n" : (defaultPurescriptApiMkGs "module LN.Api where"))
+    (MkGHeader "import LN.T\n" : (defaultPurescriptApiMkGs "module LN.Api where"))
     ((defaultOptionsCleanHaskell "../ln-api/src/LN/Api.hs" ) { debug = True })
     (MkGHeader haskellApiImports : (defaultHaskellApiMkGs $ tplTestHeader "LN.Api")))
   ''ApplicationError
@@ -610,7 +606,7 @@ mkApi
 mkApi
   (Options
     ((defaultOptionsCleanPurescript "../purescript-ln-api/src/LN/Api/String.purs") { debug = True })
-    (MkGHeader "import LN.T.Internal.Types\n" : (defaultPurescriptApiStringMkGs "module LN.Api.String where"))
+    (MkGHeader "import LN.T\n" : (defaultPurescriptApiStringMkGs "module LN.Api.String where"))
     ((defaultOptionsCleanHaskell "../ln-api/src/LN/Api/String.hs" ) { debug = True })
     (MkGHeader haskellApiImports : (defaultHaskellApiStringMkGs $ tplTestHeader "LN.Api.String")))
   ''ApplicationError
