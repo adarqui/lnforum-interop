@@ -6,8 +6,11 @@ module Lib2 (
   f_withPs,
   f_withHs,
   f_withBoth,
-  myPs,
-  myHs,
+  f_mkType,
+  myPs_MkGs,
+  myHs_MkGs,
+  myPs_Mks,
+  myHs_Mks,
   apiSpec_TH,
   apiSpec_String_TH,
   haskellApiImports
@@ -24,8 +27,26 @@ import           LN.T
 
 
 
-myPs :: [Mk]
-myPs =
+myPs_MkGs :: String -> [MkG]
+myPs_MkGs header =
+  [ MkGPurescriptImports
+  , MkGHeader header
+  , MkGFooter "-- footer"
+  ]
+
+
+
+myHs_MkGs :: String -> [MkG]
+myHs_MkGs header =
+  [ MkGHaskellImports
+  , MkGHeader header
+  , MkGFooter "-- footer"
+  ]
+
+
+
+myPs_Mks :: [Mk]
+myPs_Mks =
   [ MkType
   , MkTypeRows "R"
   , MkLens
@@ -40,8 +61,8 @@ myPs =
 
 
 
-myHs :: [Mk]
-myHs =
+myHs_Mks :: [Mk]
+myHs_Mks =
   [ MkFromJSON
   , MkToJSON
   , MkEq
@@ -51,22 +72,33 @@ myHs =
 
 
 f :: forall t. t -> (t, [Mk], [Mk])
-f t = (t, myPs, myHs)
+f t = (t, myPs_Mks, myHs_Mks)
 
 
 
 f_withPs :: forall t. t -> [Mk] -> (t, [Mk], [Mk])
-f_withPs t with = (t, myPs <> with, myHs)
+f_withPs t with = (t, myPs_Mks <> with, myHs_Mks)
 
 
 
 f_withHs :: forall t. t -> [Mk] -> (t, [Mk], [Mk])
-f_withHs t with = (t, myPs, myHs <> with)
+f_withHs t with = (t, myPs_Mks, myHs_Mks <> with)
 
 
 
 f_withBoth :: forall t. t -> [Mk] -> (t, [Mk], [Mk])
-f_withBoth t with = (t, myPs <> with, myHs <> with)
+f_withBoth t with = (t, myPs_Mks <> with, myHs_Mks <> with)
+
+
+
+f_mkType module_name module_path types =
+  mkExports
+    (Options
+      (defaultOptionsCleanPurescript $ "../purescript-ln-types/src/" <> module_path <> ".purs")
+      (MkGHeader "import Purescript.Api.Helpers\n" : (myPs_MkGs $ "module " <> module_name <> " where"))
+      (defaultOptions_Haskell_adarqui $ "../haskell-ln-types/src/" <> module_path <> ".hs")
+      (myHs_MkGs $ tplTestHeader module_name))
+    types
 
 
 

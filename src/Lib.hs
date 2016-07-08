@@ -12,89 +12,109 @@ import           Haskell.Interop.Prime
 
 
 
-mkExports
-  (Options
-    (defaultOptionsCleanPurescript "/tmp/LN.purs")
-    (MkGHeader "import Purescript.Api.Helpers\n" : (defaultPurescriptMkGs "module LN.T.Internal.Types where"))
-    (defaultOptions_Haskell_adarqui "/tmp/LN.hs")
-    (MkGHeader "import LN.T.Internal.Types\n" : (defaultHaskellMkGs $ tplTestHeader "LN.T.Internal.JSON")))
-  [ f_withBoth ''ACL [MkEq]
+f_mkType "LN.T.ACL" "LN/T/ACL" $
+  [ f_withBoth ''ACL [MkEq] ]
 
-  , f ''ApiRequest
+
+
+f_mkType "LN.T.Api" "LN/T/Api" $
+  [ f ''ApiRequest
   , f ''ApiResponse
   , f ''ApiResponses
+  ]
 
-  , f ''BoardRequest
+
+
+f_mkType "LN.T.Board" "LN/T/Board" $
+  [ f ''BoardRequest
   , f ''BoardResponse
   , f ''BoardResponses
   , f ''BoardStatResponse
   , f ''BoardStatResponses
+  ]
 
-  , f ''BucketRequest
+
+
+f_mkType "LN.T.Bucket" "LN/T/Bucket" $
+  [ f ''BucketRequest
   , f ''BucketResponse
   , f ''BucketResponses
+  ]
 
-  , f ''CountResponse
+
+
+f_mkType "LN.T.Count" "LN/T/Count" $
+  [ f ''CountResponse
   , f ''CountResponses
+  ]
 
-  , f ''DepList
 
-  , f ''EmptyRequest
-  , f ''EmptyResponse
-  , f ''EmptyResponses
 
-  , f_withBoth ''Ent [MkEq, MkRead]
+f_mkType "LN.T.DepList" "LN/T/DepList" $
+  [ f ''DepList ]
 
-  , f_withBoth ''ApplicationError [MkEq]
+
+
+f_mkType "LN.T.Ent" "LN/T/Ent" $
+  [ f_withBoth ''Ent [MkEq, MkRead] ]
+
+
+
+f_mkType "LN.T.Error" "LN/T/Error" $
+  [ f_withBoth ''ApplicationError [MkEq]
   , f_withBoth ''ValidationError [MkEq]
   , f_withBoth ''ValidationErrorCode [MkEq]
+  ]
 
-  , f ''ForumRequest
+
+
+f_mkType "LN.T.Forum" "LN/T/Forum" $
+  [ f ''ForumRequest
   , f ''ForumResponse
   , f ''ForumResponses
   , f ''ForumStatResponse
   , f ''ForumStatResponses
+  ]
 
-  , f ''GlobalGroupRequest
+
+
+
+f_mkType "LN.T.GlobalGroup" "LN/T/GlobalGroup" $
+  [ f ''GlobalGroupRequest
   , f ''GlobalGroupResponse
   , f ''GlobalGroupResponses
   , f ''GlobalGroupStatResponse
   , f ''GlobalGroupStatResponses
+  ]
 
-  , f ''GroupRequest
+
+
+f_mkType "LN.T.Group" "LN/T/Group" $
+  [ f ''GroupRequest
   , f ''GroupResponse
   , f ''GroupResponses
   , f ''GroupStatResponse
   , f ''GroupStatResponses
+  ]
 
-  , f ''GroupMemberRequest
+
+
+f_mkType "LN.T.GroupMember" "LN/T/GroupMember" $
+  [ f ''GroupMemberRequest
   , f ''GroupMemberResponse
   , f ''GroupMemberResponses
   , f ''GroupMemberStatResponse
   , f ''GroupMemberStatResponses
+  ]
 
-  , f ''LeuronRequest
+
+
+f_mkType "LN.T.Leuron" "LN/T/Leuron" $
+  [ f ''LeuronRequest
   , f ''LeuronResponse
   , f ''LeuronResponses
-
   , f ''LeuronStatResponse
   , f ''LeuronStatResponses
-
-  , f_withBoth ''LeuronTrainingSummary [MkEq, MkRead]
-  , f ''LeuronTrainingRequest
-  , f ''LeuronTrainingResponse
-  , f ''LeuronTrainingResponses
-
-  , f ''LeuronTrainingStatResponse
-  , f ''LeuronTrainingStatResponses
-
-  , f_withBoth ''LikeOpt [MkEq, MkRead]
-  , f ''LikeRequest
-  , f ''LikeResponse
-  , f ''LikeResponses
-  , f ''LikeStatResponse
-  , f ''LikeStatResponses
-
   , f ''LeuronData
   , f_withBoth ''TyLeuron [MkEq]
   , f ''Fact
@@ -115,118 +135,213 @@ mkExports
   , f ''LinearDemo
   , f ''QA
   , f ''Table
+  ]
 
-  , f_withBoth ''Membership [MkEq, MkRead]
 
-  , f ''OrganizationRequest
+
+f_mkType "LN.T.LeuronTraining" "LN/T/LeuronTraining" $
+  [ f_withBoth ''LeuronTrainingSummary [MkEq, MkRead]
+  , f ''LeuronTrainingRequest
+  , f ''LeuronTrainingResponse
+  , f ''LeuronTrainingResponses
+  , f ''LeuronTrainingStatResponse
+  , f ''LeuronTrainingStatResponses
+  ]
+
+
+
+f_mkType "LN.T.Like" "LN/T/Like" $
+  [ f_withBoth ''LikeOpt [MkEq, MkRead]
+  , f ''LikeRequest
+  , f ''LikeResponse
+  , f ''LikeResponses
+  , f ''LikeStatResponse
+  , f ''LikeStatResponses
+  ]
+
+
+
+f_mkType "LN.T.Membership" "LN/T/Membership" $
+  [ f_withBoth ''Membership [MkEq, MkRead] ]
+
+
+
+
+f_mkType "LN.T.Organization" "LN/T/Organization" $
+  [ f ''OrganizationRequest
   , f ''OrganizationResponse
   , f ''OrganizationResponses
   , f ''OrganizationStatResponse
   , f ''OrganizationStatResponses
+  ]
 
-  , f_withBoth ''Param [MkEq, MkShow, MkQueryParam]
+
+
+f_mkType "LN.T.Param" "LN/T/Param" $
+  [ f_withBoth ''Param [MkEq, MkShow, MkQueryParam]
   , f_withBoth ''ParamTag [MkEq, MkShow, MkRead]
   , f_withBoth ''SortOrderBy [MkEq, MkShow, MkRead]
   , f_withBoth ''OrderBy [MkEq, MkShow, MkRead]
+  ]
 
-  , f_withBoth ''Permission [MkEq]
+
+
+f_mkType "LN.T.Permission" "LN/T/Permission" $
+  [ f_withBoth ''Permission [MkEq]
   , f ''Permissions
+  ]
 
-  , f ''PmRequest
+
+
+f_mkType "LN.T.Pm" "LN/T/Pm" $
+  [ f ''PmRequest
   , f ''PmResponse
   , f ''PmResponses
+  ]
 
-  , f ''PmInRequest
+
+
+f_mkType "LN.T.PmIn" "LN/T/PmIn" $
+  [ f ''PmInRequest
   , f ''PmInResponse
   , f ''PmInResponses
+  ]
 
-  , f ''PmOutRequest
+
+
+f_mkType "LN.T.PmOut" "LN/T/PmOut" $
+  [ f ''PmOutRequest
   , f ''PmOutResponse
   , f ''PmOutResponses
+  ]
 
-  , f ''ProfileX
+
+
+f_mkType "LN.T.Profile" "LN/T/Profile" $
+  [ f ''ProfileX
   , f_withBoth ''ProfileGender [MkEq, MkRead]
   , f ''ProfileRequest
   , f ''ProfileResponse
   , f ''ProfileResponses
+  ]
 
-  , f ''ReminderRequest
+
+
+f_mkType "LN.T.Reminder" "LN/T/Reminder" $
+  [ f ''ReminderRequest
   , f ''ReminderResponse
   , f ''ReminderResponses
-
   , f ''ReminderFolderRequest
   , f ''ReminderFolderResponse
   , f ''ReminderFolderResponses
+  ]
 
-  , f ''ResourceType
+
+
+f_mkType "LN.T.Resource" "LN/T/Resource" $
+  [ f ''ResourceType
   , f_withBoth ''TyResourceType [MkEq]
   , f ''ResourceRequest
   , f ''ResourceResponse
   , f ''ResourceResponses
-
   , f ''ResourceStatResponse
   , f ''ResourceStatResponses
+  ]
 
-  , f_withBoth ''Size [MkEq]
 
-  , f ''Splits
+
+f_mkType "LN.T.Size" "LN/T/Size" $
+  [ f_withBoth ''Size [MkEq] ]
+
+
+
+f_mkType "LN.T.Splits" "LN/T/Splits" $
+  [ f ''Splits
   , f_withBoth ''TySplits [MkEq]
+  ]
 
-  , f ''Substitutions
+
+
+f_mkType "LN.T.Substitution" "LN/T/Substitutions" $
+  [ f ''Substitutions
   , f_withBoth ''TySubstitutions [MkEq]
+  ]
+
+
 
 --  , f ''StyleResponse
 --  , f ''StyleResponses
---
-  , f ''StarRequest
+
+
+
+f_mkType "LN.T.Star" "LN/T/Star" $
+  [ f ''StarRequest
   , f ''StarResponse
   , f ''StarResponses
   , f ''StarStatResponse
   , f ''StarStatResponses
+  ]
 
-  , f_withBoth ''SystemTeam [MkEq, MkRead]
 
+
+f_mkType "LN.T.Team" "LN/T/Team" $
+  [ f_withBoth ''SystemTeam [MkEq, MkRead]
   , f ''TeamRequest
   , f ''TeamResponse
   , f ''TeamResponses
   , f ''TeamStatResponse
   , f ''TeamStatResponses
+  ]
 
-  , f ''TeamMemberRequest
+
+
+f_mkType "LN.T.TeamMember" "LN/T/TeamMember" $
+  [ f ''TeamMemberRequest
   , f ''TeamMemberResponse
   , f ''TeamMemberResponses
   , f ''TeamMemberStatResponse
   , f ''TeamMemberStatResponses
+  ]
 
-  , f ''TestRequest
-  , f ''TestResponse
-  , f ''TestResponses
 
-  , f ''ThreadRequest
+
+f_mkType "LN.T.Thread" "LN/T/Thread" $
+  [ f ''ThreadRequest
   , f ''ThreadResponse
   , f ''ThreadResponses
-
   , f ''ThreadStatResponse
   , f ''ThreadStatResponses
+  ]
 
-  , f_withBoth ''PostData [MkEq]
 
+
+f_mkType "LN.T.ThreadPost" "LN/T/ThreadPost" $
+  [ f_withBoth ''PostData [MkEq]
   , f ''ThreadPostRequest
   , f ''ThreadPostResponse
   , f ''ThreadPostResponses
-
   , f ''ThreadPostStatResponse
   , f ''ThreadPostStatResponses
+  ]
 
-  , f ''UserRequest
+
+
+f_mkType "LN.T.User" "LN/T/User" $
+  [ f ''UserRequest
   , f ''UserResponse
   , f ''UserResponses
   , f ''UserSanitizedResponse
   , f ''UserSanitizedResponses
   , f ''UserSanitizedStatResponse
   , f ''UserSanitizedStatResponses
+  ]
 
-  , f_withBoth ''Visibility [MkEq, MkRead]
+
+
+f_mkType "LN.T.Visibility" "LN/T/Visibility" $
+  [ f_withBoth ''Visibility [MkEq, MkRead] ]
+
+
 
 {-
   , f ''WorkoutRequest
@@ -241,54 +356,121 @@ mkExports
   , f ''TemplateInfo
 -}
 
-  -- Packs
-  --
-  , f ''OrganizationPackResponse
+
+
+--
+-- Packs
+--
+
+
+
+f_mkType "LN.T.Pack.Organization" "LN/T/Pack/Organization" $
+  [ f ''OrganizationPackResponse
   , f ''OrganizationPackResponses
+  ]
 
-  , f ''TeamPackResponse
+
+
+f_mkType "LN.T.Pack.Team" "LN/T/Pack/Team" $
+  [ f ''TeamPackResponse
   , f ''TeamPackResponses
+  ]
 
-  , f ''TeamMemberPackResponse
+
+
+f_mkType "LN.T.Pack.TeamMember" "LN/T/Pack/TeamMember" $
+  [ f ''TeamMemberPackResponse
   , f ''TeamMemberPackResponses
+  ]
 
-  , f ''UserPackResponse
+
+
+f_mkType "LN.T.Pack.User" "LN/T/Pack/User" $
+  [ f ''UserPackResponse
   , f ''UserPackResponses
+  ]
 
-  , f ''UserSanitizedPackResponse
+
+
+f_mkType "LN.T.Pack.Sanitized.User" "LN/T/Pack/Sanitized/User" $
+  [ f ''UserSanitizedPackResponse
   , f ''UserSanitizedPackResponses
+  ]
 
-  , f ''GlobalGroupPackResponse
+
+
+f_mkType "LN.T.Pack.GlobalGroup" "LN/T/Pack/GlobalGroup" $
+  [ f ''GlobalGroupPackResponse
   , f ''GlobalGroupPackResponses
+  ]
 
-  , f ''GroupPackResponse
+
+
+f_mkType "LN.T.Pack.Group" "LN/T/Pack/Group" $
+  [ f ''GroupPackResponse
   , f ''GroupPackResponses
+  ]
 
-  , f ''GroupMemberPackResponse
+
+
+f_mkType "LN.T.Pack.GroupMember" "LN/T/Pack/GroupMember" $
+  [ f ''GroupMemberPackResponse
   , f ''GroupMemberPackResponses
+  ]
 
-  , f ''ForumPackResponse
+
+
+f_mkType "LN.T.Pack.Forum" "LN/T/Pack/Forum" $
+  [ f ''ForumPackResponse
   , f ''ForumPackResponses
+  ]
 
-  , f ''BoardPackResponse
+
+
+f_mkType "LN.T.Pack.Board" "LN/T/Pack/Board" $
+  [ f ''BoardPackResponse
   , f ''BoardPackResponses
+  ]
 
-  , f ''ThreadPackResponse
+
+
+f_mkType "LN.T.Pack.Thread" "LN/T/Pack/Thread" $
+  [ f ''ThreadPackResponse
   , f ''ThreadPackResponses
+  ]
 
-  , f ''ThreadPostPackResponse
+
+
+f_mkType "LN.T.Pack.ThreadPost" "LN/T/Pack/ThreadPost" $
+  [ f ''ThreadPostPackResponse
   , f ''ThreadPostPackResponses
+  ]
 
-  , f ''ResourcePackResponse
+
+
+f_mkType "LN.T.Pack.Resource" "LN/T/Pack/Resource" $
+  [ f ''ResourcePackResponse
   , f ''ResourcePackResponses
+  ]
 
-  , f ''LeuronPackResponse
+
+
+f_mkType "LN.T.Pack.Leuron" "LN/T/Pack/Leuron" $
+  [ f ''LeuronPackResponse
   , f ''LeuronPackResponses
+  ]
 
-  , f ''PmInPackResponse
+
+
+f_mkType "LN.T.Pack.PmIn" "LN/T/Pack/PmIn" $
+  [ f ''PmInPackResponse
   , f ''PmInPackResponses
+  ]
 
-  , f ''PmOutPackResponse
+
+
+f_mkType "LN.T.Pack.PmOut" "LN/T/Pack/PmOut" $
+  [ f ''PmOutPackResponse
   , f ''PmOutPackResponses
   ]
 
@@ -296,10 +478,10 @@ mkExports
 
 mkConvert
   (Options
-    (defaultOptionsCleanPurescript "/tmp/LN.Convert.purs")
-    (MkGHeader "import LN.T.Internal.Types\n" : (defaultPurescriptConvertMkGs "module LN.T.Internal.Convert where"))
-    (defaultOptions_Haskell_adarqui "/tmp/LN.Convert.hs")
-    (MkGHeader "import LN.T.Internal.Types\n" : (defaultHaskellConvertMkGs $ tplTestHeader "LN.T.Internal.Convert")))
+    (defaultOptionsCleanPurescript "../purescript-ln-types/src/LN/T/Convert.purs")
+    (MkGHeader "import LN.T.Internal.Types\n" : (defaultPurescriptConvertMkGs "module LN.T.Convert where"))
+    (defaultOptions_Haskell_adarqui "../haskell-ln-types/src/LN/T/Convert.hs")
+    (MkGHeader "import LN.T.Internal.Types\n" : (defaultHaskellConvertMkGs $ tplTestHeader "LN.T.Convert")))
   [ (''ApiRequest, ''ApiResponse)
   , (''ApiResponse, ''ApiRequest)
 
@@ -371,10 +553,10 @@ mkConvert
 
 mkApi
   (Options
-    ((defaultOptionsCleanPurescript "/tmp/LN.Api.purs") { debug = True })
-    (MkGHeader "import LN.T.Internal.Types\n" : (defaultPurescriptApiMkGs "module LN.Api.Internal where"))
-    ((defaultOptionsCleanHaskell "/tmp/LN.Api.hs" ) { debug = True })
-    (MkGHeader haskellApiImports : (defaultHaskellApiMkGs $ tplTestHeader "LN.Api.Internal")))
+    ((defaultOptionsCleanPurescript "../purescript-ln-api/src/LN/Api.purs") { debug = True })
+    (MkGHeader "import LN.T.Internal.Types\n" : (defaultPurescriptApiMkGs "module LN.Api where"))
+    ((defaultOptionsCleanHaskell "../ln-api/src/LN/Api.hs" ) { debug = True })
+    (MkGHeader haskellApiImports : (defaultHaskellApiMkGs $ tplTestHeader "LN.Api")))
   ''ApplicationError
   apiSpec_TH
 
@@ -382,9 +564,9 @@ mkApi
 
 mkApi
   (Options
-    ((defaultOptionsCleanPurescript "/tmp/LN.Api.String.purs") { debug = True })
-    (MkGHeader "import LN.T.Internal.Types\n" : (defaultPurescriptApiStringMkGs "module LN.Api.Internal.String where"))
-    ((defaultOptionsCleanHaskell "/tmp/LN.Api.String.hs" ) { debug = True })
-    (MkGHeader haskellApiImports : (defaultHaskellApiStringMkGs $ tplTestHeader "LN.Api.Internal.String")))
+    ((defaultOptionsCleanPurescript "../purescript-ln-api/src/LN/Api/String.purs") { debug = True })
+    (MkGHeader "import LN.T.Internal.Types\n" : (defaultPurescriptApiStringMkGs "module LN.Api.String where"))
+    ((defaultOptionsCleanHaskell "../ln-api/src/LN/Api/String.hs" ) { debug = True })
+    (MkGHeader haskellApiImports : (defaultHaskellApiStringMkGs $ tplTestHeader "LN.Api.String")))
   ''ApplicationError
   apiSpec_String_TH
