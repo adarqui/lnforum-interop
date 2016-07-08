@@ -654,6 +654,7 @@ apiEntries_TH' =
   -- User Profile
   , ApiEntry_TH "UserProfiles"
     [ ParNone_TH
+    , ParBy_TH "ByUserId" ''Int64
     , ParBy_TH "ByUsersIds" ''Int64_L
     ]
     [ ApiGET_TH ''ProfileResponses ]
