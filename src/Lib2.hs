@@ -6,12 +6,14 @@ module Lib2 (
   f_withPs,
   f_withHs,
   f_withBoth,
+  f_withBoth',
   f_mkType,
   f_mkType',
   myPs_MkGs,
   myHs_MkGs,
   myPs_Mks,
   myHs_Mks,
+  myHs_Mks',
   apiSpec_TH,
   apiSpec_String_TH,
   haskellApiImports
@@ -65,8 +67,13 @@ myPs_Mks =
 
 
 myHs_Mks :: [Mk]
-myHs_Mks =
-  [ MkTypeWith [MkTypeOpts_StrictFields, MkTypeOpts_Deriving Deriving_Generic, MkTypeOpts_Deriving Deriving_Typeable, MkTypeOpts_Deriving Deriving_NFData]
+myHs_Mks = myHs_Mks' []
+
+
+
+myHs_Mks' :: [MkTypeOpts] -> [Mk]
+myHs_Mks' type_opts =
+  [ MkTypeWith $ [MkTypeOpts_StrictFields, MkTypeOpts_Deriving Deriving_Generic, MkTypeOpts_Deriving Deriving_Typeable, MkTypeOpts_Deriving Deriving_NFData] <> type_opts
   , MkFromJSON
   , MkToJSON
   , MkEq
@@ -92,6 +99,11 @@ f_withHs t with = (t, myPs_Mks, myHs_Mks <> with)
 
 f_withBoth :: forall t. t -> [Mk] -> (t, [Mk], [Mk])
 f_withBoth t with = (t, myPs_Mks <> with, myHs_Mks <> with)
+
+
+
+f_withBoth' :: forall t. t -> [MkTypeOpts] -> [Mk] -> (t, [Mk], [Mk])
+f_withBoth' t type_opts with = (t, myPs_Mks <> with, myHs_Mks' type_opts <> with)
 
 
 

@@ -201,7 +201,7 @@ f_mkType'
 
 f_mkType "LN.T.Param" "LN/T/Param" $
   [ f_withBoth ''Param [MkEq, MkShow, MkQueryParam]
-  , f_withBoth ''ParamTag [MkEq, MkShow, MkRead]
+  , f_withBoth' ''ParamTag [MkTypeOpts_Deriving Deriving_Ord] [MkEq, MkShow, MkRead]
   , f_withBoth ''SortOrderBy [MkEq, MkShow, MkRead]
   , f_withBoth ''OrderBy [MkEq, MkShow, MkRead]
   ]
