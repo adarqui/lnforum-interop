@@ -8,6 +8,7 @@ module Lib (
 
 import           Lib2
 import           LN.T
+import           LN.T.Job
 import           Haskell.Interop.Prime
 
 
@@ -111,6 +112,15 @@ f_mkType "LN.T.GroupMember" "LN/T/GroupMember" $
   , f ''GroupMemberResponses
   , f ''GroupMemberStatResponse
   , f ''GroupMemberStatResponses
+  ]
+
+
+
+f_mkType'
+  ["LN.T"]
+  "LN.T.Job" "LN/T/Job" $
+  [ f_withBoth ''Job [MkEq]
+  , f_withBoth ''Queue [MkEq]
   ]
 
 

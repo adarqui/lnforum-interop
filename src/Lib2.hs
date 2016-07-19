@@ -66,7 +66,7 @@ myPs_Mks =
 
 myHs_Mks :: [Mk]
 myHs_Mks =
-  [ MkType
+  [ MkTypeWith [MkTypeOpts_StrictFields, MkTypeOpts_Deriving Deriving_Generic, MkTypeOpts_Deriving Deriving_Typeable, MkTypeOpts_Deriving Deriving_NFData]
   , MkFromJSON
   , MkToJSON
   , MkEq
