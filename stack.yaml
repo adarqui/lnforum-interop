@@ -4,6 +4,6 @@ packages:
 - '../ln-types'
 - '../restyle'
 - '../haskell-interop-prime'
-- '../haskell-api-helpers'
+- '../haskell-api-helpers-shared'
 extra-deps: [restyle-0.1.0]
 resolver: lts-6.4
