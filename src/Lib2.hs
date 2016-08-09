@@ -21,11 +21,12 @@ module Lib2 (
 
 
 
-import           Data.Int              (Int64)
-import           Data.List             (intercalate)
-import           Data.Monoid           ((<>))
-import           Data.Text             (Text)
+import           Data.Int                   (Int64)
+import           Data.List                  (intercalate)
+import           Data.Monoid                ((<>))
+import           Data.Text                  (Text)
 import           Haskell.Interop.Prime
+import           Language.Haskell.TH.Syntax
 import           LN.T
 
 
@@ -107,7 +108,22 @@ f_withBoth' t type_opts with = (t, myPs_Mks <> with, myHs_Mks' type_opts <> with
 
 
 
+f_mkType
+  :: String
+  -> FilePath
+  -> [(Name, [Mk], [Mk])]
+  -> Q [Dec]
+
 f_mkType = f_mkType' []
+
+
+
+f_mkType'
+  :: [String]
+  -> String
+  -> FilePath
+  -> [(Name, [Mk], [Mk])]
+  -> Q [Dec]
 
 f_mkType' imports module_name module_path types =
   mkExports
