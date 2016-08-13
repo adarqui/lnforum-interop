@@ -808,6 +808,7 @@ apiEntries_TH' =
   , ApiEntry_TH "UserPacks"
     [ ParNone_TH
     , ParBy_TH "ByUsersIds" ''Int64_L
+    , ParBy_TH "ByEmail" ''Text
     ]
     [ ApiGET_TH ''UserPackResponses ]
 
