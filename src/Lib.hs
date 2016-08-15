@@ -6,10 +6,13 @@ module Lib (
 
 
 
-import           Lib2
+import           Haskell.Interop.Prime
+import           Prelude
+
 import           LN.T
 import           LN.T.Job
-import           Haskell.Interop.Prime
+
+import           Lib2
 
 
 

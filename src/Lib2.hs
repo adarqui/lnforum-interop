@@ -27,6 +27,8 @@ import           Data.Monoid                ((<>))
 import           Data.Text                  (Text)
 import           Haskell.Interop.Prime
 import           Language.Haskell.TH.Syntax
+import           Prelude
+
 import           LN.T
 
 
