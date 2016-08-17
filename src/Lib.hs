@@ -368,6 +368,16 @@ f_mkType "LN.T.Visibility" "LN/T/Visibility" $
 
 
 
+f_mkType'
+  ["LN.T.Ent"]
+  "LN.T.View" "LN/T/View" $
+  [ f ''ViewRequest
+  , f ''ViewResponse
+  , f ''ViewResponses
+  ]
+
+
+
 {-
   , f ''WorkoutRequest
   , f ''WorkoutResponse
