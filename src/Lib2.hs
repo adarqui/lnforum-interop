@@ -510,11 +510,13 @@ apiEntries_TH' =
     [ ApiPOST_TH ''ViewRequest ''ViewResponse ]
 
   , ApiEntry_TH "View"
-    [ Par_TH [("view_id", ''Int64)] ]
-    [ ApiGET_TH ''ViewResponse
-    , ApiPUT_TH ''ViewRequest ''ViewResponse
-    , ApiDELETE_TH ''()
+    [ ParBy_TH "ByOrganizationId" ''Int64
+    , ParBy_TH "ByForumId" ''Int64
+    , ParBy_TH "ByBoardId" ''Int64
+    , ParBy_TH "ByThreadId" ''Int64
+    , ParBy_TH "ByThreadPostId" ''Int64
     ]
+    [ ApiPUT_TH ''ViewRequest ''ViewResponse ]
 
 
 
