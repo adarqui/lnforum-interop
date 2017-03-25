@@ -1019,6 +1019,15 @@ apiEntries_TH' =
   , ApiEntry_TH "PmOutPack"
     [ Par_TH [("pm_out_id", ''Int64)] ]
     [ ApiGET_TH ''PmOutPackResponse ]
+
+
+
+  -- Templates
+
+  , ApiEntry_TH "Templates"
+    [ ParNone_TH ]
+    [ ApiGET_TH ''Templates ]
+
   ]
 
 

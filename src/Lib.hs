@@ -543,6 +543,13 @@ f_mkType'
 
 
 
+f_mkType'
+  ["LN.T.Resource", "LN.T.Leuron", "LN.T.LeuronTraining", "LN.T.Bucket"]
+  "LN.T.Templates" "LN/T/Templates" $
+  [ f ''Templates ]
+
+
+
 mkConvert
   (Options
     (defaultOptionsCleanPurescript "../purescript-ln-types/src/LN/T/Convert.purs")

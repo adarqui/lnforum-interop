@@ -17,6 +17,8 @@ library
   hs-source-dirs:      src
   exposed-modules:     Lib
                      , Lib2
+                     , LibNotes
+                     , LibNotes2
   build-depends:       base
                      , haskell-interop-prime
                      , ln-types
