@@ -74,7 +74,7 @@ f_mkType'
   , f ''LeuronStatResponse
   , f ''LeuronStatResponses
   , f ''LeuronData
-  , f_withBoth ''TyLeuron [MkEq]
+  , f_withBoth ''TyLeuron [MkEq, MkShow]
   , f ''Fact
   , f ''FactList
   , f ''Card
@@ -160,7 +160,7 @@ f_mkType' ["LN.T.Visibility"] "LN.T.Reminder" "LN/T/Reminder" $
 
 f_mkType' ["LN.T.DepList", "LN.T.Visibility"] "LN.T.Resource" "LN/T/Resource" $
   [ f ''ResourceType
-  , f_withBoth ''TyResourceType [MkEq]
+  , f_withBoth ''TyResourceType [MkEq, MkShow]
   , f ''ResourceRequest
   , f ''ResourceResponse
   , f ''ResourceResponses
@@ -217,7 +217,7 @@ f_mkType "LN.T.User" "LN/T/User" $
 
 
 f_mkType "LN.T.Visibility" "LN/T/Visibility" $
-  [ f_withBoth ''Visibility [MkEq, MkRead] ]
+  [ f_withBoth ''Visibility [MkEq, MkRead, MkShow] ]
 
 
 
