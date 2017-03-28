@@ -197,11 +197,11 @@ apiEntries_TH' =
     [ ParNone_TH ]
     [ ApiGET_TH ''LeuronResponses ]
 
-  , ApiEntry_TH "Leuron"
+  , ApiEntry_Name_TH "Leurons" (Just "Leuron")
     [ ParBy_TH "ByResourceId" ''Int64]
     [ ApiPOST_TH ''LeuronRequest ''LeuronResponse ]
 
-  , ApiEntry_TH "Leuron"
+  , ApiEntry_Name_TH "Leurons" (Just "Leuron")
     [ Par_TH [("leuron_id", ''Int64)] ]
     [ ApiGET_TH ''LeuronResponse
     , ApiPUT_TH ''LeuronRequest ''LeuronResponse
@@ -226,11 +226,11 @@ apiEntries_TH' =
     [ ParNone_TH ]
     [ ApiGET_TH ''ResourceResponses ]
 
-  , ApiEntry_TH "Resource"
+  , ApiEntry_Name_TH "Resources" (Just "Resource")
     [ ParNone_TH ]
     [ ApiPOST_TH ''ResourceRequest ''ResourceResponse ]
 
-  , ApiEntry_TH "Resource"
+  , ApiEntry_Name_TH "Resources" (Just "Resource")
     [ Par_TH [("resource_id", ''Int64)] ]
     [ ApiGET_TH ''ResourceResponse
     , ApiPUT_TH ''ResourceRequest ''ResourceResponse
