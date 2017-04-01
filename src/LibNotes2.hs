@@ -190,6 +190,11 @@ apiEntries_TH' =
     [ ParNone_TH ]
     [ ApiGET_TH ''CountResponses ]
 
+  -- Buckets Count
+  , ApiEntry_TH "BucketsCount"
+    [ ParNone_TH ]
+    [ ApiGET_TH ''CountResponses ]
+
 
 
   -- Leuron
