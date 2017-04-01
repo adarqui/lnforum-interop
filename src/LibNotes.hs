@@ -264,6 +264,15 @@ f_mkType'
 
 
 f_mkType'
+  ["LN.T.Bucket","LN.T.User"]
+  "LN.T.Pack.Bucket" "LN/T/Pack/Bucket" $
+  [ f ''BucketPackResponse
+  , f ''BucketPackResponses
+  ]
+
+
+
+f_mkType'
   ["LN.T.Resource", "LN.T.Leuron", "LN.T.LeuronTraining", "LN.T.Bucket"]
   "LN.T.Templates" "LN/T/Templates" $
   [ f ''Templates ]

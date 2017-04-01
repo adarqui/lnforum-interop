@@ -367,6 +367,17 @@ apiEntries_TH' =
     [ Par_TH [("leuron_id", ''Int64)] ]
     [ ApiGET_TH ''LeuronPackResponse ]
 
+
+
+  -- Packs: Buckets
+  , ApiEntry_TH "BucketPacks"
+    [ ParNone_TH ]
+    [ ApiGET_TH ''BucketPackResponses ]
+
+  , ApiEntry_TH "BucketPack"
+    [ Par_TH [("bucket_id", ''Int64)] ]
+    [ ApiGET_TH ''BucketPackResponse ]
+
   ]
 
 
