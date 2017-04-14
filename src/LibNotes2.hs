@@ -252,6 +252,46 @@ apiEntries_TH' =
 
 
 
+  -- Bucket
+  , ApiEntry_TH "Buckets"
+    [ ParNone_TH ]
+    [ ApiGET_TH ''BucketResponses ]
+
+  , ApiEntry_Name_TH "Buckets" (Just "Bucket")
+    [ ParNone_TH ]
+    [ ApiPOST_TH ''BucketRequest ''BucketResponse ]
+
+  , ApiEntry_Name_TH "Buckets" (Just "Bucket")
+    [ Par_TH [("bucket_id", ''Int64)] ]
+    [ ApiGET_TH ''BucketResponse
+    , ApiPUT_TH ''BucketRequest ''BucketResponse
+    , ApiDELETE_TH ''()
+    ]
+
+
+
+  -- BucketResource
+  , ApiEntry_Name_TH "BucketResources" (Just "BucketResource")
+    [ Par_TH [("bucket_id", ''Int64), ("resource_id", ''Int64)] ]
+    [ ApiPOST_TH ''() ''() ]
+
+  , ApiEntry_Name_TH "BucketResources" (Just "BucketResource")
+    [ Par_TH [("bucket_id", ''Int64), ("resource_id", ''Int64)] ]
+    [ ApiDELETE_TH ''() ]
+
+
+
+  -- BucketLeuron
+  , ApiEntry_Name_TH "BucketLeurons" (Just "BucketLeuron")
+    [ Par_TH [("bucket_id", ''Int64), ("leuron_id", ''Int64)] ]
+    [ ApiPOST_TH ''() ''() ]
+
+  , ApiEntry_Name_TH "BucketLeurons" (Just "BucketLeuron")
+    [ Par_TH [("bucket_id", ''Int64), ("leuron_id", ''Int64)] ]
+    [ ApiDELETE_TH ''() ]
+
+
+
   -- User
   , ApiEntry_TH "Users"
     [ ParNone_TH

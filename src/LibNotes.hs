@@ -57,6 +57,14 @@ f_mkType "LN.T.Ent" "LN/T/Ent" $
 
 
 
+f_mkType "LN.T.Id" "LN/T/Id" $
+  [ f ''IdRequest
+  , f ''IdResponse
+  , f ''IdResponses
+  ]
+
+
+
 f_mkType "LN.T.Error" "LN/T/Error" $
   [ f_withBoth ''ApplicationError [MkEq, MkDefault "Error_Unknown"]
   , f_withBoth ''ValidationError [MkEq, MkDefault "Validate Validate_Unknown Nothing"]
@@ -293,6 +301,9 @@ mkConvert
 
   , (''LeuronRequest, ''LeuronResponse)
   , (''LeuronResponse, ''LeuronRequest)
+
+  , (''IdRequest, ''IdResponse)
+  , (''IdResponse, ''IdRequest)
 
   , (''LeuronTrainingRequest, ''LeuronTrainingResponse)
   , (''LeuronTrainingResponse, ''LeuronTrainingRequest)
