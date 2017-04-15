@@ -292,13 +292,13 @@ apiEntries_TH' =
 
 
   -- BucketResourceId
-  , ApiEntry_Name_TH "BucketResourceIds" (Just "BucketResourceId")
+  , ApiEntry_Name_TH "BucketResourceIds" (Just "BucketResourceIds")
     [ Par_TH [("bucket_id", ''Int64)] ]
     [ ApiGET_TH ''SimpleIntsResponse ]
 
 
   -- BucketLeuronId
-  , ApiEntry_Name_TH "BucketLeuronIds" (Just "BucketLeuronId")
+  , ApiEntry_Name_TH "BucketLeuronIds" (Just "BucketLeuronIds")
     [ Par_TH [("bucket_id", ''Int64)] ]
     [ ApiGET_TH ''SimpleIntsResponse ]
 
