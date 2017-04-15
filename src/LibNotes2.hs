@@ -291,6 +291,17 @@ apiEntries_TH' =
     [ ApiDELETE_TH ''() ]
 
 
+  -- BucketResourceId
+  , ApiEntry_Name_TH "BucketResourceIds" (Just "BucketResourceId")
+    [ Par_TH [("bucket_id", ''Int64)] ]
+    [ ApiGET_TH ''SimpleIntsResponse ]
+
+
+  -- BucketLeuronId
+  , ApiEntry_Name_TH "BucketLeuronIds" (Just "BucketLeuronId")
+    [ Par_TH [("bucket_id", ''Int64)] ]
+    [ ApiGET_TH ''SimpleIntsResponse ]
+
 
   -- User
   , ApiEntry_TH "Users"

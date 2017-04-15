@@ -178,6 +178,19 @@ f_mkType' ["LN.T.DepList", "LN.T.Visibility"] "LN.T.Resource" "LN/T/Resource" $
 
 
 
+f_mkType "LN.T.Simple" "LN/T/Simple" $
+  [ f ''SimpleIntRequest
+  , f ''SimpleIntResponse
+  , f ''SimpleIntsRequest
+  , f ''SimpleIntsResponse
+  , f ''SimpleStringRequest
+  , f ''SimpleStringResponse
+  , f ''SimpleStringsRequest
+  , f ''SimpleStringsResponse
+  ]
+
+
+
 f_mkType "LN.T.Size" "LN/T/Size" $
   [ f_withBoth ''Size [MkEq] ]
 
@@ -319,6 +332,11 @@ mkConvert
 
   , (''UserRequest, ''UserSanitizedResponse)
   , (''UserSanitizedResponse, ''UserRequest)
+
+  , (''SimpleStringRequest, ''SimpleStringResponse)
+  , (''SimpleStringsRequest, ''SimpleStringsResponse)
+  , (''SimpleStringRequest, ''SimpleStringResponse)
+  , (''SimpleStringsRequest, ''SimpleStringsResponse)
   ]
 
 
