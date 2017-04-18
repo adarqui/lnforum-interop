@@ -155,17 +155,6 @@ f_mkType' ["LN.T.Ent"] "LN.T.Profile" "LN/T/Profile" $
 
 
 
-f_mkType' ["LN.T.Visibility"] "LN.T.Reminder" "LN/T/Reminder" $
-  [ f ''ReminderRequest
-  , f ''ReminderResponse
-  , f ''ReminderResponses
-  , f ''ReminderFolderRequest
-  , f ''ReminderFolderResponse
-  , f ''ReminderFolderResponses
-  ]
-
-
-
 f_mkType' ["LN.T.DepList", "LN.T.Visibility"] "LN.T.Resource" "LN/T/Resource" $
   [ f ''ResourceType
   , f_withBoth ''TyResourceType [MkEq, MkShow]

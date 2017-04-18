@@ -1,5 +1,5 @@
 name:                ln-interop
-version:             0.1.0.0
+version:             0.1.0.114
 synopsis:            Auto-generates code for use with the LN backend & frontend.
 description:         Please see README.md
 homepage:            https://github.com/adarqui/ln-interop#readme
@@ -15,10 +15,8 @@ cabal-version:       >=1.10
 
 library
   hs-source-dirs:      src
-  exposed-modules:     Lib
-                     , Lib2
-                     , LibNotes
-                     , LibNotes2
+  exposed-modules:     LibNotes
+                       LibNotes2
   build-depends:       base
                      , haskell-interop-prime
                      , ln-types
