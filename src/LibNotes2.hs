@@ -190,11 +190,30 @@ apiEntries_TH' =
     [ ParNone_TH ]
     [ ApiGET_TH ''CountResponses ]
 
+  -- Leurons Count
+  , ApiEntry_TH "LeuronNodesCount"
+    [ ParNone_TH ]
+    [ ApiGET_TH ''CountResponses ]
+
+  -- Leurons Count
+  , ApiEntry_TH "LeuronTrainingCount"
+    [ ParNone_TH ]
+    [ ApiGET_TH ''CountResponses ]
+
   -- Buckets Count
   , ApiEntry_TH "BucketsCount"
     [ ParNone_TH ]
     [ ApiGET_TH ''CountResponses ]
 
+  -- BucketRounds Count
+  , ApiEntry_TH "BucketRoundsCount"
+    [ ParNone_TH ]
+    [ ApiGET_TH ''CountResponses ]
+
+  -- BucketNodes Count
+  , ApiEntry_TH "BucketNodesCount"
+    [ ParNone_TH ]
+    [ ApiGET_TH ''CountResponses ]
 
 
   -- Leuron

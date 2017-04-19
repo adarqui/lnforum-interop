@@ -40,6 +40,22 @@ f_mkType "LN.T.Bucket" "LN/T/Bucket" $
 
 
 
+f_mkType "LN.T.BucketRound" "LN/T/BucketRound" $
+  [ f ''BucketRoundRequest
+  , f ''BucketRoundResponse
+  , f ''BucketRoundResponses
+  ]
+
+
+
+f_mkType "LN.T.BucketNode" "LN/T/BucketNode" $
+  [ f ''BucketNodeRequest
+  , f ''BucketNodeResponse
+  , f ''BucketNodeResponses
+  ]
+
+
+
 f_mkType "LN.T.Count" "LN/T/Count" $
   [ f ''CountResponse
   , f ''CountResponses
@@ -112,6 +128,14 @@ f_mkType "LN.T.LeuronTraining" "LN/T/LeuronTraining" $
   , f ''LeuronTrainingResponses
   , f ''LeuronTrainingStatResponse
   , f ''LeuronTrainingStatResponses
+  ]
+
+
+
+f_mkType "LN.T.LeuronNode" "LN/T/LeuronNode" $
+  [ f ''LeuronNodeRequest
+  , f ''LeuronNodeResponse
+  , f ''LeuronNodeResponses
   ]
 
 
@@ -301,14 +325,23 @@ mkConvert
   , (''BucketRequest, ''BucketResponse)
   , (''BucketResponse, ''BucketRequest)
 
-  , (''LeuronRequest, ''LeuronResponse)
-  , (''LeuronResponse, ''LeuronRequest)
+  , (''BucketRoundRequest, ''BucketRoundResponse)
+  , (''BucketRoundResponse, ''BucketRoundRequest)
+
+  , (''BucketNodeRequest, ''BucketNodeResponse)
+  , (''BucketNodeResponse, ''BucketNodeRequest)
 
   , (''IdRequest, ''IdResponse)
   , (''IdResponse, ''IdRequest)
 
+  , (''LeuronRequest, ''LeuronResponse)
+  , (''LeuronResponse, ''LeuronRequest)
+
   , (''LeuronTrainingRequest, ''LeuronTrainingResponse)
   , (''LeuronTrainingResponse, ''LeuronTrainingRequest)
+
+  , (''LeuronNodeRequest, ''LeuronNodeResponse)
+  , (''LeuronNodeResponse, ''LeuronNodeRequest)
 
   , (''ProfileRequest, ''ProfileResponse)
   , (''ProfileResponse, ''ProfileRequest)
