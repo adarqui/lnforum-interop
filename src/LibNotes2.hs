@@ -153,6 +153,16 @@ type Text_L = [Text]
 
 apiEntries_TH' :: [ApiEntry_TH]
 apiEntries_TH' =
+
+  map (\s -> ApiEntry_TH (s <> "Count")
+    [ ParNone_TH ]
+    [ ApiGET_TH ''CountResponses ])
+    ["Resources", "Leurons", "LeuronNodes", "LeuronTraining"
+    ,"Buckets", "BucketRounds", "BucketNodes"
+    ,"Users"]
+
+  <>
+
   [
 
   -- Api
@@ -173,49 +183,6 @@ apiEntries_TH' =
 
 
 
-  -- Counts
-
-  -- Users Count
-  , ApiEntry_TH "UsersCount"
-    [ ParNone_TH ]
-    [ ApiGET_TH ''CountResponses ]
-
-  -- Resources Count
-  , ApiEntry_TH "ResourcesCount"
-    [ ParNone_TH ]
-    [ ApiGET_TH ''CountResponses ]
-
-  -- Leurons Count
-  , ApiEntry_TH "LeuronsCount"
-    [ ParNone_TH ]
-    [ ApiGET_TH ''CountResponses ]
-
-  -- Leurons Count
-  , ApiEntry_TH "LeuronNodesCount"
-    [ ParNone_TH ]
-    [ ApiGET_TH ''CountResponses ]
-
-  -- Leurons Count
-  , ApiEntry_TH "LeuronTrainingCount"
-    [ ParNone_TH ]
-    [ ApiGET_TH ''CountResponses ]
-
-  -- Buckets Count
-  , ApiEntry_TH "BucketsCount"
-    [ ParNone_TH ]
-    [ ApiGET_TH ''CountResponses ]
-
-  -- BucketRounds Count
-  , ApiEntry_TH "BucketRoundsCount"
-    [ ParNone_TH ]
-    [ ApiGET_TH ''CountResponses ]
-
-  -- BucketNodes Count
-  , ApiEntry_TH "BucketNodesCount"
-    [ ParNone_TH ]
-    [ ApiGET_TH ''CountResponses ]
-
-
   -- Leuron
   , ApiEntry_TH "Leurons"
     [ ParNone_TH ]
@@ -230,6 +197,19 @@ apiEntries_TH' =
     [ ApiGET_TH ''LeuronResponse
     , ApiPUT_TH ''LeuronRequest ''LeuronResponse
     , ApiDELETE_TH ''()
+    ]
+
+
+
+  -- LeuronNode
+  , ApiEntry_TH "LeuronNodes"
+    [ ParNone_TH ]
+    [ ApiGET_TH ''LeuronNodeResponses ]
+
+  , ApiEntry_Name_TH "LeuronNodes" (Just "LeuronNode")
+    [ Par_TH [("leuron_node_id", ''Int64)] ]
+    [ ApiGET_TH ''LeuronNodeResponse
+    , ApiPUT_TH ''LeuronNodeRequest ''LeuronNodeResponse
     ]
 
 
@@ -289,6 +269,37 @@ apiEntries_TH' =
 
 
 
+  -- BucketRound
+  , ApiEntry_TH "BucketRounds"
+    [ ParNone_TH ]
+    [ ApiGET_TH ''BucketRoundResponses ]
+
+  , ApiEntry_Name_TH "BucketRounds" (Just "BucketRound")
+    [ ParNone_TH ]
+    [ ApiPOST_TH ''BucketRoundRequest ''BucketRoundResponse ]
+
+  , ApiEntry_Name_TH "BucketRounds" (Just "BucketRound")
+    [ Par_TH [("bucket_round_id", ''Int64)] ]
+    [ ApiGET_TH ''BucketRoundResponse
+    , ApiPUT_TH ''BucketRoundRequest ''BucketRoundResponse
+    , ApiDELETE_TH ''()
+    ]
+
+
+
+  -- BucketNode
+  , ApiEntry_TH "BucketNodes"
+    [ ParNone_TH ]
+    [ ApiGET_TH ''BucketNodeResponses ]
+
+  , ApiEntry_Name_TH "BucketNodes" (Just "BucketNode")
+    [ Par_TH [("bucket_node_id", ''Int64)] ]
+    [ ApiGET_TH ''BucketNodeResponse
+    , ApiPUT_TH ''BucketNodeRequest ''BucketNodeResponse
+    ]
+
+
+
   -- BucketResource
   , ApiEntry_Name_TH "BucketResources" (Just "BucketResource")
     [ Par_TH [("bucket_id", ''Int64), ("resource_id", ''Int64)] ]
@@ -310,16 +321,19 @@ apiEntries_TH' =
     [ ApiDELETE_TH ''() ]
 
 
+
   -- BucketResourceId
   , ApiEntry_Name_TH "BucketResourceIds" (Just "BucketResourceIds")
     [ Par_TH [("bucket_id", ''Int64)] ]
     [ ApiGET_TH ''SimpleIntsResponse ]
 
 
+
   -- BucketLeuronId
   , ApiEntry_Name_TH "BucketLeuronIds" (Just "BucketLeuronIds")
     [ Par_TH [("bucket_id", ''Int64)] ]
     [ ApiGET_TH ''SimpleIntsResponse ]
+
 
 
   -- User

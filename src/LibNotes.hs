@@ -32,7 +32,9 @@ f_mkType "LN.T.Api" "LN/T/Api" $
 
 
 
-f_mkType "LN.T.Bucket" "LN/T/Bucket" $
+f_mkType'
+  [ "LN.T.Training" ]
+  "LN.T.Bucket" "LN/T/Bucket" $
   [ f ''BucketRequest
   , f ''BucketResponse
   , f ''BucketResponses
@@ -40,7 +42,9 @@ f_mkType "LN.T.Bucket" "LN/T/Bucket" $
 
 
 
-f_mkType "LN.T.BucketRound" "LN/T/BucketRound" $
+f_mkType'
+  ["LN.T.Training"]
+  "LN.T.BucketRound" "LN/T/BucketRound" $
   [ f ''BucketRoundRequest
   , f ''BucketRoundResponse
   , f ''BucketRoundResponses
@@ -48,7 +52,9 @@ f_mkType "LN.T.BucketRound" "LN/T/BucketRound" $
 
 
 
-f_mkType "LN.T.BucketNode" "LN/T/BucketNode" $
+f_mkType'
+  ["LN.T.Training"]
+  "LN.T.BucketNode" "LN/T/BucketNode" $
   [ f ''BucketNodeRequest
   , f ''BucketNodeResponse
   , f ''BucketNodeResponses
@@ -132,7 +138,9 @@ f_mkType "LN.T.LeuronTraining" "LN/T/LeuronTraining" $
 
 
 
-f_mkType "LN.T.LeuronNode" "LN/T/LeuronNode" $
+f_mkType'
+  ["LN.T.Training"]
+  "LN.T.LeuronNode" "LN/T/LeuronNode" $
   [ f ''LeuronNodeRequest
   , f ''LeuronNodeResponse
   , f ''LeuronNodeResponses
@@ -310,6 +318,14 @@ f_mkType'
   ["LN.T.Resource", "LN.T.Leuron", "LN.T.LeuronTraining", "LN.T.Bucket"]
   "LN.T.Templates" "LN/T/Templates" $
   [ f ''Templates ]
+
+
+
+f_mkType
+  "LN.T.Training" "LN/T/Training" $
+  [ f ''TrainingNode
+  , f_withBoth ''TrainingStyle [MkEq, MkShow]
+  ]
 
 
 
