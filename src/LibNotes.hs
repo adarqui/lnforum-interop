@@ -324,7 +324,7 @@ f_mkType'
 f_mkType
   "LN.T.Training" "LN/T/Training" $
   [ f ''TrainingNode
-  , f_withBoth ''TrainingStyle [MkEq, MkShow]
+  , f_withBoth ''TrainingStyle [MkEq, MkShow, MkRead]
   ]
 
 
