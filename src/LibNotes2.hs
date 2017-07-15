@@ -165,8 +165,12 @@ apiEntries_TH' =
 
   [
 
+    ApiEntry_TH "BucketRoundLeuronsCount"
+    [ Par_TH [("bucket_round_id", ''Int64)] ]
+    [ ApiGET_TH ''CountResponse ]
+
   -- Api
-    ApiEntry_TH "Apis"
+  , ApiEntry_TH "Apis"
     [ ParNone_TH ]
     [ ApiGET_TH ''ApiResponses ]
 
@@ -183,13 +187,16 @@ apiEntries_TH' =
 
 
 
+
   -- Leuron
   , ApiEntry_TH "Leurons"
     [ ParNone_TH ]
     [ ApiGET_TH ''LeuronResponses ]
 
   , ApiEntry_Name_TH "Leurons" (Just "Leuron")
-    [ ParBy_TH "ByResourceId" ''Int64]
+    [ ParBy_TH "ByResourceId" ''Int64
+    , ParBy_TH "ByBucketRoundId" ''Int64
+    ]
     [ ApiPOST_TH ''LeuronRequest ''LeuronResponse ]
 
   , ApiEntry_Name_TH "Leurons" (Just "Leuron")
@@ -284,6 +291,13 @@ apiEntries_TH' =
     , ApiPUT_TH ''BucketRoundRequest ''BucketRoundResponse
     , ApiDELETE_TH ''()
     ]
+
+
+
+  -- BucketRoundLeuronOp
+  , ApiEntry_TH "BucketRoundLeuronOp"
+    [ Par_TH [("bucket_round_id", ''Int64), ("leuron_id", ''Int64), ("op", ''Text)]]
+    [ ApiPOST_TH ''() ''() ]
 
 
 
@@ -449,6 +463,7 @@ apiEntries_TH' =
     [ ParNone_TH
     , ParBy_TH "ByLeuronsIds" ''Int64_L
     , ParBy_TH "ByResourceId" ''Int64
+    , ParBy_TH "ByBucketRoundId" ''Int64
     ]
     [ ApiGET_TH ''LeuronPackResponses ]
 

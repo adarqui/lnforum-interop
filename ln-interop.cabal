@@ -1,5 +1,5 @@
 name:                ln-interop
-version:             0.1.0.116
+version:             0.1.0.117
 synopsis:            Auto-generates code for use with the LN backend & frontend.
 description:         Please see README.md
 homepage:            https://github.com/adarqui/ln-interop#readme

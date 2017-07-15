@@ -105,6 +105,7 @@ f_mkType'
   , f ''LeuronStatResponses
   , f ''LeuronData
   , f_withBoth ''TyLeuron [MkEq, MkShow]
+  , f_withBoth ''LeuronStatus [MkEq, MkShow]
   , f ''Fact
   , f ''FactList
   , f ''Card
