@@ -64,7 +64,7 @@ myPs_Mks =
   , MkDecodeJson
   , MkRequestable
   , MkRespondable
-  , MkIsForeign
+  -- , MkDecode
   ]
 
 
