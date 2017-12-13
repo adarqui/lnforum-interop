@@ -15,8 +15,8 @@ cabal-version:       >=1.10
 
 library
   hs-source-dirs:      src
-  exposed-modules:     LibNotes
-                       LibNotes2
+  exposed-modules:     LibForum
+                       LibForum2
   build-depends:       base
                      , haskell-interop-prime
                      , ln-types

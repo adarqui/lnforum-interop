@@ -1,7 +1,7 @@
 flags: {}
 packages:
 - .
-- ../ln-types
+- ../lnforum-types
 - ../restyle
 - ../haskell-interop-prime
 - ../haskell-api-helpers-shared
