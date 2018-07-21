@@ -99,7 +99,7 @@ f_mkType' ["LN.T.Ent"] "LN.T.Profile" "LN/T/Profile" $
 
 
 
-f_mkType' ["LN.T.DepList", "LN.T.Visibility"] "LN.T.Board" "LN/T/Board" $
+f_mkType' ["LN.T.Visibility"] "LN.T.Board" "LN/T/Board" $
   [ f ''BoardType
   , f_withBoth ''TyBoardType [MkEq, MkShow]
   , f ''BoardRequest
