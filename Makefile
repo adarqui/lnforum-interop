@@ -8,4 +8,7 @@ tests:
 	stack test --fast
 
 sync:
-	cd ../ln-api-ghcjs; make sync
+	cd ../lnforum-api-ghcjs; make sync
+
+ghci:
+	stack ghci

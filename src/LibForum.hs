@@ -170,7 +170,7 @@ mkConvert
   (Options
     (defaultOptionsCleanPurescript "../purescript-lnforum-types/src/LN/T/Convert.purs")
     (MkGHeader "import LN.T\n" : (defaultPurescriptConvertMkGs "module LN.T.Convert where"))
-    (defaultOptions_Haskell_adarqui "../haskell-lnforum-types/src/LN/T/Convert.hs")
+    (defaultOptions_Haskell_adarqui "../lnforum-types-gen/src/LN/T/Convert.hs")
     (MkGHeader "import LN.T\n" : (defaultHaskellConvertMkGs $ tplTestHeader "LN.T.Convert")))
   [ (''ApiRequest, ''ApiResponse)
   , (''ApiResponse, ''ApiRequest)

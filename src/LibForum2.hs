@@ -132,7 +132,7 @@ f_mkType' imports module_name module_path types =
     (Options
       (defaultOptionsCleanPurescript $ "../purescript-lnforum-types/src/" <> module_path <> ".purs")
       (MkGHeader "import Purescript.Api.Helpers\n" : (myPs_MkGs imports $ "module " <> module_name <> " where"))
-      (defaultOptions_Haskell_adarqui $ "../haskell-lnforum-types/src/" <> module_path <> ".hs")
+      (defaultOptions_Haskell_adarqui $ "../lnforum-types-gen/src/" <> module_path <> ".hs")
       (myHs_MkGs imports $ tplTestHeader module_name))
     types
 
