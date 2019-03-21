@@ -1,5 +1,5 @@
 name:                lnforum-interop
-version:             0.1.0.117
+version:             0.1.0.119
 synopsis:            Auto-generates code for use with the LN backend & frontend.
 description:         Please see README.md
 homepage:            https://github.com/adarqui/lnforum-interop#readme

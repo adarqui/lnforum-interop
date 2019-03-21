@@ -24,6 +24,22 @@ f_mkType'
 
 
 
+f_mkType "LN.T.Thread" "LN/T/Thread" $
+  [ f ''ThreadRequest
+  , f ''ThreadResponse
+  , f ''ThreadResponses
+  ]
+
+
+
+f_mkType "LN.T.ThreadPost" "LN/T/ThreadPost" $
+  [ f ''ThreadPostRequest
+  , f ''ThreadPostResponse
+  , f ''ThreadPostResponses
+  ]
+
+
+
 f_mkType "LN.T.Api" "LN/T/Api" $
   [ f ''ApiRequest
   , f ''ApiResponse
@@ -166,6 +182,24 @@ f_mkType'
 
 
 
+f_mkType'
+  ["LN.T.Thread", "LN.T.User", "LN.T.Permission", "LN.T.Like"]
+  "LN.T.Pack.Thread" "LN/T/Pack/Thread" $
+  [ f ''ThreadPackResponse
+  , f ''ThreadPackResponses
+  ]
+
+
+
+f_mkType'
+  ["LN.T.ThreadPost", "LN.T.User", "LN.T.Permission", "LN.T.Like"]
+  "LN.T.Pack.ThreadPost" "LN/T/Pack/ThreadPost" $
+  [ f ''ThreadPostPackResponse
+  , f ''ThreadPostPackResponses
+  ]
+
+
+
 mkConvert
   (Options
     (defaultOptionsCleanPurescript "../purescript-lnforum-types/src/LN/T/Convert.purs")
@@ -183,6 +217,12 @@ mkConvert
 
   , (''BoardRequest, ''BoardResponse)
   , (''BoardResponse, ''BoardRequest)
+
+  , (''ThreadRequest, ''ThreadResponse)
+  , (''ThreadResponse, ''ThreadRequest)
+
+  , (''ThreadPostRequest, ''ThreadPostResponse)
+  , (''ThreadPostResponse, ''ThreadPostRequest)
 
   , (''UserRequest, ''UserResponse)
   , (''UserResponse, ''UserRequest)
