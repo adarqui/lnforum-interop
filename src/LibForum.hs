@@ -116,16 +116,6 @@ f_mkType "LN.T.Size" "LN/T/Size" $
 
 
 
-f_mkType' ["LN.T.Ent"] "LN.T.Star" "LN/T/Star" $
-  [ f ''StarRequest
-  , f ''StarResponse
-  , f ''StarResponses
-  , f ''StarStatResponse
-  , f ''StarStatResponses
-  ]
-
-
-
 f_mkType "LN.T.User" "LN/T/User" $
   [ f ''UserRequest
   , f ''UserResponse
@@ -159,7 +149,7 @@ f_mkType'
 
 
 f_mkType'
-  ["LN.T.User", "LN.T.Like", "LN.T.Star", "LN.T.Profile"]
+  ["LN.T.User", "LN.T.Like", "LN.T.Profile"]
   "LN.T.Pack.Sanitized.User" "LN/T/Pack/Sanitized/User" $
   [ f ''UserSanitizedPackResponse
   , f ''UserSanitizedPackResponses
@@ -168,7 +158,7 @@ f_mkType'
 
 
 f_mkType'
-  ["LN.T.Board", "LN.T.User", "LN.T.Permission", "LN.T.Like", "LN.T.Star"]
+  ["LN.T.Board", "LN.T.User", "LN.T.Permission", "LN.T.Like"]
   "LN.T.Pack.Board" "LN/T/Pack/Board" $
   [ f ''BoardPackResponse
   , f ''BoardPackResponses

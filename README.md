@@ -1,4 +1,4 @@
-# ln-interop
+# lnforum-interop
 
 **LN PROJECT: WORK IN PROGRESS**
 

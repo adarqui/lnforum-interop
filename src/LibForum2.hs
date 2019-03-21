@@ -158,7 +158,7 @@ apiEntries_TH' =
     [ ParNone_TH ]
     [ ApiGET_TH ''CountResponses ])
     ["Forums", "Boards", "Threads", "ThreadPosts"
-    ,"Likes", "Stars"
+    ,"Likes"
     ,"Users"]
 
   <>
