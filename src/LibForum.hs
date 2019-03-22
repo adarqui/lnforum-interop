@@ -24,22 +24,6 @@ f_mkType'
 
 
 
-f_mkType "LN.T.Thread" "LN/T/Thread" $
-  [ f ''ThreadRequest
-  , f ''ThreadResponse
-  , f ''ThreadResponses
-  ]
-
-
-
-f_mkType "LN.T.ThreadPost" "LN/T/ThreadPost" $
-  [ f ''ThreadPostRequest
-  , f ''ThreadPostResponse
-  , f ''ThreadPostResponses
-  ]
-
-
-
 f_mkType "LN.T.Api" "LN/T/Api" $
   [ f ''ApiRequest
   , f ''ApiResponse
@@ -57,14 +41,6 @@ f_mkType "LN.T.Count" "LN/T/Count" $
 
 f_mkType "LN.T.Ent" "LN/T/Ent" $
   [ f_withBoth ''Ent [MkEq, MkRead] ]
-
-
-
-f_mkType "LN.T.Id" "LN/T/Id" $
-  [ f ''IdRequest
-  , f ''IdResponse
-  , f ''IdResponses
-  ]
 
 
 
@@ -127,6 +103,29 @@ f_mkType' ["LN.T.Visibility"] "LN.T.Board" "LN/T/Board" $
 
 
 
+f_mkType' ["LN.T.Board"] "LN.T.Thread" "LN/T/Thread" $
+  [ f ''ThreadRequest
+  , f ''ThreadResponse
+  , f ''ThreadResponses
+  , f ''ThreadStatResponse
+  , f ''ThreadStatResponses
+  ]
+
+
+
+f_mkType' ["LN.T.Board", "LN.T.Thread"] "LN.T.ThreadPost" "LN/T/ThreadPost" $
+  [ f ''PostData
+  , f_withBoth ''TyPostData [MkEq, MkShow]
+  , f ''ThreadPostRequest
+  , f ''ThreadPostResponse
+  , f ''ThreadPostResponses
+  , f ''ThreadPostStatResponse
+  , f ''ThreadPostStatResponses
+  ]
+
+
+
+
 f_mkType "LN.T.Size" "LN/T/Size" $
   [ f_withBoth ''Size [MkEq] ]
 
@@ -183,7 +182,7 @@ f_mkType'
 
 
 f_mkType'
-  ["LN.T.Thread", "LN.T.User", "LN.T.Permission", "LN.T.Like"]
+  ["LN.T.Thread", "LN.T.User", "LN.T.Permission", "LN.T.Like", "LN.T.Board", "LN.T.ThreadPost"]
   "LN.T.Pack.Thread" "LN/T/Pack/Thread" $
   [ f ''ThreadPackResponse
   , f ''ThreadPackResponses
@@ -192,7 +191,7 @@ f_mkType'
 
 
 f_mkType'
-  ["LN.T.ThreadPost", "LN.T.User", "LN.T.Permission", "LN.T.Like"]
+  ["LN.T.ThreadPost", "LN.T.User", "LN.T.Permission", "LN.T.Like", "LN.T.Board", "LN.T.Thread"]
   "LN.T.Pack.ThreadPost" "LN/T/Pack/ThreadPost" $
   [ f ''ThreadPostPackResponse
   , f ''ThreadPostPackResponses
@@ -208,9 +207,6 @@ mkConvert
     (MkGHeader "import LN.T\n" : (defaultHaskellConvertMkGs $ tplTestHeader "LN.T.Convert")))
   [ (''ApiRequest, ''ApiResponse)
   , (''ApiResponse, ''ApiRequest)
-
-  , (''IdRequest, ''IdResponse)
-  , (''IdResponse, ''IdRequest)
 
   , (''ProfileRequest, ''ProfileResponse)
   , (''ProfileResponse, ''ProfileRequest)

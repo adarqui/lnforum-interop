@@ -157,7 +157,7 @@ apiEntries_TH' =
   map (\s -> ApiEntry_TH (s <> "Count")
     [ ParNone_TH ]
     [ ApiGET_TH ''CountResponses ])
-    ["Forums", "Boards", "Threads", "ThreadPosts"
+    ["Boards", "Threads", "ThreadPosts"
     ,"Likes"
     ,"Users"]
 
