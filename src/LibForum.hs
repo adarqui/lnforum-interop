@@ -91,6 +91,15 @@ f_mkType' ["LN.T.Ent"] "LN.T.Profile" "LN/T/Profile" $
 
 
 
+f_mkType' ["LN.T.Visibility"] "LN.T.Forum" "LN/T/Forum" $
+  [ f ''ForumRequest
+  , f ''ForumResponse
+  , f ''ForumResponses
+  , f ''ForumStatResponse
+  ]
+
+
+
 f_mkType' ["LN.T.Visibility"] "LN.T.Board" "LN/T/Board" $
   [ f ''BoardType
   , f_withBoth ''TyBoardType [MkEq, MkShow]
@@ -173,6 +182,14 @@ f_mkType'
 
 
 f_mkType'
+  ["LN.T.Forum", "LN.T.User", "LN.T.Permission", "LN.T.Like"]
+  "LN.T.Pack.Forum" "LN/T/Pack/Forum" $
+  [ f ''ForumPackResponse
+  ]
+
+
+
+f_mkType'
   ["LN.T.Board", "LN.T.User", "LN.T.Permission", "LN.T.Like"]
   "LN.T.Pack.Board" "LN/T/Pack/Board" $
   [ f ''BoardPackResponse
@@ -210,6 +227,9 @@ mkConvert
 
   , (''ProfileRequest, ''ProfileResponse)
   , (''ProfileResponse, ''ProfileRequest)
+
+  , (''ForumRequest, ''ForumResponse)
+  , (''ForumResponse, ''ForumRequest)
 
   , (''BoardRequest, ''BoardResponse)
   , (''BoardResponse, ''BoardRequest)

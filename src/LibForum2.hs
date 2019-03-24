@@ -161,12 +161,13 @@ apiEntries_TH' =
     ,"Likes"
     ,"Users"]
 
+
   <>
 
   [
 
   -- Api
-  ApiEntry_TH "Apis"
+    ApiEntry_TH "Apis"
     [ ParNone_TH ]
     [ ApiGET_TH ''ApiResponses ]
 
@@ -194,13 +195,32 @@ apiEntries_TH' =
 
 
 
+  -- Forum
+  , ApiEntry_Name_TH "Forums" (Just "Forum")
+    [ ParNone_TH ]
+    [ ApiPOST_TH ''ForumRequest ''ForumResponse ]
+
+  , ApiEntry_Name_TH "Forums" (Just "Forum")
+    [ Par_TH [("forum_id", ''Int64)] ]
+    [ ApiGET_TH ''ForumResponse
+    , ApiPUT_TH ''ForumRequest ''ForumResponse
+    ]
+  , ApiEntry_TH "ForumStat"
+    [ Par_TH [("forum_id", ''Int64)] ]
+    [ ApiGET_TH ''ForumStatResponse ]
+
+
+
+
   -- Board
   , ApiEntry_TH "Boards"
     [ ParNone_TH ]
     [ ApiGET_TH ''BoardResponses ]
 
   , ApiEntry_Name_TH "Boards" (Just "Board")
-    [ ParNone_TH ]
+    [ ParNone_TH
+    , ParBy_TH "ByForumId" ''Int64
+    ]
     [ ApiPOST_TH ''BoardRequest ''BoardResponse ]
 
   , ApiEntry_Name_TH "Boards" (Just "Board")
@@ -217,6 +237,96 @@ apiEntries_TH' =
   , ApiEntry_TH "BoardStat"
     [ Par_TH [("board_id", ''Int64)] ]
     [ ApiGET_TH ''BoardStatResponse ]
+
+
+
+
+  -- Threads
+  , ApiEntry_TH "Threads"
+    [ ParNone_TH ]
+    [ ApiGET_TH ''ThreadResponses ]
+
+  , ApiEntry_Name_TH "Threads" (Just "Thread")
+    [ ParNone_TH
+    , ParBy_TH "ByBoardId" ''Int64
+    ]
+    [ ApiPOST_TH ''ThreadRequest ''ThreadResponse ]
+
+  , ApiEntry_Name_TH "Threads" (Just "Thread")
+    [ Par_TH [("thread_id", ''Int64)] ]
+    [ ApiGET_TH ''ThreadResponse
+    , ApiPUT_TH ''ThreadRequest ''ThreadResponse
+    , ApiDELETE_TH ''()
+    ]
+
+  , ApiEntry_TH "ThreadStats"
+    [ ParBy_TH "ByThreadsIds" ''Int64_L ]
+    [ ApiGET_TH ''ThreadStatResponses ]
+
+  , ApiEntry_TH "ThreadStat"
+    [ Par_TH [("thread_id", ''Int64)] ]
+    [ ApiGET_TH ''ThreadStatResponse ]
+
+  , ApiEntry_TH "ThreadsCount"
+    [ ParBy_TH "ByBoardId" ''Int64 ]
+    [ ApiGET_TH ''CountResponses ]
+
+
+
+  --- ThreadPosts
+  , ApiEntry_TH "ThreadPosts"
+    [ ParNone_TH ]
+    [ ApiGET_TH ''ThreadPostResponses ]
+
+  , ApiEntry_Name_TH "ThreadPosts" (Just "ThreadPost")
+    [ ParNone_TH
+    , ParBy_TH "ByThreadId" ''Int64
+    ]
+    [ ApiPOST_TH ''ThreadPostRequest ''ThreadPostResponse ]
+
+  , ApiEntry_Name_TH "ThreadPosts" (Just "ThreadPost")
+    [ Par_TH [("thread_post_id", ''Int64)] ]
+    [ ApiGET_TH ''ThreadPostResponse
+    , ApiPUT_TH ''ThreadPostRequest ''ThreadPostResponse
+    , ApiDELETE_TH ''()
+    ]
+
+  , ApiEntry_TH "ThreadPostStats"
+    [ ParBy_TH "ByThreadPostsIds" ''Int64_L ]
+    [ ApiGET_TH ''ThreadPostStatResponses ]
+
+  , ApiEntry_TH "ThreadPostStat"
+    [ Par_TH [("threadpost_id", ''Int64)] ]
+    [ ApiGET_TH ''ThreadPostStatResponse ]
+
+  , ApiEntry_TH "ThreadPostsCount"
+    [ ParBy_TH "ByBoardId" ''Int64 ]
+    [ ApiGET_TH ''CountResponses ]
+
+  , ApiEntry_TH "ThreadPostsCount"
+    [ ParBy_TH "ByThreadId" ''Int64 ]
+    [ ApiGET_TH ''CountResponses ]
+
+
+
+  -- Likes
+  , ApiEntry_TH "Likes"
+    [ ParNone_TH ]
+    [ ApiGET_TH ''LikeResponses ]
+
+  -- TODO FIXME: something is forcing it to postLike, when the only postLike should be postLike_ByThreadPostId
+  , ApiEntry_TH "Likes"
+    [ ParNone_TH
+    , ParBy_TH "ByThreadPostId" ''Int64
+    ]
+    [ ApiPOST_TH ''LikeRequest ''LikeResponse ]
+
+  , ApiEntry_Name_TH "Likes" (Just "Like")
+    [ Par_TH [("like_id", ''Int64)] ]
+    [ ApiGET_TH ''LikeResponse
+    , ApiPUT_TH ''LikeRequest ''LikeResponse
+    , ApiDELETE_TH ''()
+    ]
 
 
 
@@ -315,16 +425,56 @@ apiEntries_TH' =
 
 
 
+  -- Packs: Forums
+  , ApiEntry_TH "ForumPack"
+    [ Par_TH [("forum_id", ''Int64)] ]
+    [ ApiGET_TH ''ForumPackResponse ]
+
+
+
   -- Packs: Boards
   , ApiEntry_TH "BoardPacks"
     [ ParNone_TH
     , ParBy_TH "ByBoardsIds" ''Int64_L
+    , ParBy_TH "ByForumId" ''Int64
     ]
     [ ApiGET_TH ''BoardPackResponses ]
 
   , ApiEntry_TH "BoardPack"
     [ Par_TH [("board_id", ''Int64)] ]
     [ ApiGET_TH ''BoardPackResponse ]
+
+
+
+  -- Packs: Threads
+  , ApiEntry_TH "ThreadPacks"
+    [ ParNone_TH
+    , ParBy_TH "ByThreadsIds" ''Int64_L
+    , ParBy_TH "ByBoardId" ''Int64
+    ]
+    [ ApiGET_TH ''ThreadPackResponses ]
+
+  , ApiEntry_TH "ThreadPack"
+    [ Par_TH [("thread_id", ''Int64)] ]
+    [ ApiGET_TH ''ThreadPackResponse ]
+
+
+
+  -- Packs: ThreadPosts
+  , ApiEntry_TH "ThreadPostPacks"
+    [ ParNone_TH
+    , ParBy_TH "ByThreadPostsIds" ''Int64_L
+    , ParBy_TH "ByThreadId" ''Int64
+    ]
+    [ ApiGET_TH ''ThreadPostPackResponses ]
+
+  , ApiEntry_TH "ThreadPostPack"
+    [ Par_TH [("thread_post_id", ''Int64)] ]
+    [ ApiGET_TH ''ThreadPostPackResponse ]
+
+  , ApiEntry_TH "RecentThreadPostPacks"
+    [ ParNone_TH ]
+    [ ApiGET_TH ''ThreadPostPackResponses ]
 
   ]
 
@@ -350,6 +500,16 @@ apiEntries_String_TH' =
     ApiEntry_TH "UserSanitizedPack"
     [ Par_TH [("user_name", ''Text)] ]
     [ ApiGET_TH ''UserSanitizedPackResponse ]
+
+  -- Packs: Board
+  , ApiEntry_TH "BoardPack"
+    [ Par_TH [("board_sid", ''Text)] ] --  ("board_id", ''Int64)] ]
+    [ ApiGET_TH ''BoardPackResponse ]
+
+  -- Packs: Thread
+  , ApiEntry_TH "ThreadPack"
+    [ Par_TH [("thread_sid", ''Text)] ] --  ("board_id", ''Int64)] ]
+    [ ApiGET_TH ''ThreadPackResponse ]
   ]
 
 
