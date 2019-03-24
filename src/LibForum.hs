@@ -190,7 +190,7 @@ f_mkType'
 
 
 f_mkType'
-  ["LN.T.Board", "LN.T.User", "LN.T.Permission", "LN.T.Like"]
+  ["LN.T.Board", "LN.T.User", "LN.T.Permission", "LN.T.Like", "LN.T.Thread", "LN.T.ThreadPost"]
   "LN.T.Pack.Board" "LN/T/Pack/Board" $
   [ f ''BoardPackResponse
   , f ''BoardPackResponses
