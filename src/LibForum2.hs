@@ -220,6 +220,7 @@ apiEntries_TH' =
   , ApiEntry_Name_TH "Boards" (Just "Board")
     [ ParNone_TH
     , ParBy_TH "ByForumId" ''Int64
+    , ParBy_TH "ByBoardId" ''Int64
     ]
     [ ApiPOST_TH ''BoardRequest ''BoardResponse ]
 
