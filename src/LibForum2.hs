@@ -502,6 +502,11 @@ apiEntries_String_TH' =
     [ Par_TH [("user_name", ''Text)] ]
     [ ApiGET_TH ''UserSanitizedPackResponse ]
 
+  -- Packs: Forum
+  , ApiEntry_TH "ForumPack"
+    [ Par_TH [("forum_sid", ''Text)] ] --  ("forum_id", ''Int64)] ]
+    [ ApiGET_TH ''ForumPackResponse ]
+
   -- Packs: Board
   , ApiEntry_TH "BoardPack"
     [ Par_TH [("board_sid", ''Text)] ] --  ("board_id", ''Int64)] ]
