@@ -163,6 +163,13 @@ f_mkType "LN.T.Visibility" "LN/T/Visibility" $
 
 
 
+-- f_mkType'
+--   ["LN.T.Pack.User", "LN.T.Pack.Forum", "LN.T.Pack.Board", "LN.T.Pack.ThreadPost"]
+--   "LN.T.Pack.Boot" "LN/T/Pack/Boot" $
+--   [ f ''BootPackResponse ]
+
+
+
 f_mkType'
   ["LN.T.Profile", "LN.T.User"]
   "LN.T.Pack.User" "LN/T/Pack/User" $

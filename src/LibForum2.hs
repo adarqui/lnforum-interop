@@ -399,6 +399,13 @@ apiEntries_TH' =
 
 
 
+  -- -- Packs: Boot
+  -- , ApiEntry_TH "BootPack"
+  --   [ ParNone_TH ]
+  --   [ ApiGET_TH ''BootPackResponse ]
+
+
+
   -- Packs: User
   , ApiEntry_TH "UserPacks"
     [ ParNone_TH
