@@ -339,7 +339,7 @@ apiEntries_TH' =
     ]
     [ ApiGET_TH ''UserResponses ]
 
-  , ApiEntry_TH "User"
+  , ApiEntry_TH "Users"
     [ ParNone_TH ]
     [ ApiPOST_TH ''UserRequest ''UserResponse ]
 
